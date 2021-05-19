@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <title>O’Reilly Velocity Conference 2019</title>
+
+  <link rel="stylesheet" href="../../../../../theme/css/main.css" />
+
+  <link href="https://thewagner.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Wagner Atom Feed" />
+
+
+</head>
+
+<body id="index" class="home">
+  <header id="banner" class="body">
+    <a href="../../../../../">The Wagner </a>
+    <nav>
+      <ul>
+      </ul>
+    </nav>
+  </header><!-- /#banner -->
+
+<article>
+  <header>
+    <h1 class="entry-title">
+      <a href="../../../../../blog/2019/11/08/oreilly-velocity-conference-2019/" rel="bookmark"
+         title="Permalink to O’Reilly Velocity Conference 2019">O&#8217;Reilly Velocity Conference&nbsp;2019</a></h1>
+  </header>
+
+  <div class="entry-content">
+<p class="post-info">
+        <time class="published" datetime="2019-11-08T00:00:00+01:00">Fri 08 November 2019</time>
+        <span class="vcard author">
+            <a class="url fn" href="../../../../../author/david-wagner.html">David Wagner</a>
+        </span>
+</p><!-- /.post-info -->    <p>Between November 5-7 I spent three days on the <a href="https://conferences.oreilly.com/velocity/vl-eu">O&#8217;Reilly Velocity</a> conference.
+This post documents the sessions I like the&nbsp;most.</p>
+<p>The conference organizers collected the speaker slides
+<a href="https://conferences.oreilly.com/velocity/vl-eu/public/schedule/proceedings">here</a></p>
+<h1>Tuesday</h1>
+<p>I travelled to Berlin on Monday and started the conference with two, half-day&nbsp;tutorials.</p>
+<h2>Open Telemetry&nbsp;workshop</h2>
+<p>In this workshop, tutored by Liz Fong-Jones, I learned about OpenTelemetry: a
+project aiming to standardize metrics and trace collections from&nbsp;applications.</p>
+<p>Our task was to instrument the provided Go code.  This was an <span class="caps">HTTP</span> service
+computing the Fibonacci sequence using its recursive definition.  To compute
+the preceding two numbers in the sequence the server code repeatedly issues
+<span class="caps">HTTP</span> client calls to itself.  This implementation is terrible for production,
+but it is an excellent classroom&nbsp;example.</p>
+<p>For the practical exercises we wrote the code on <a href="https://glitch.com">Glitch</a>.
+I think this was a great choice, I could immediately start working on the
+execrcises without installing anything on my&nbsp;computer.</p>
+<ul>
+<li><a href="https://opentelemetry.io/docs/">OpenTelemetry&nbsp;documentation</a></li>
+<li><a href="https://godoc.org/go.opentelemetry.io/otel">Go&nbsp;documentation</a></li>
+</ul>
+<h2><span class="caps">SRE</span> classroom&nbsp;(PubSub)</h2>
+<p>In this workshop Google engineers lead us to design a strongly consistent,
+multi-datacenter queue.  The instructors described how the system should
+behave, what latencies are tolerated, what failures modes are allowed.  We
+formed groups of five-six people to come-up with an implementation plan.  Then,
+we created a bill of materials to estimate the cost of building the&nbsp;system.</p>
+<h1>Wednesday</h1>
+<p>Keynotes:</p>
+<ul>
+<li><em>The power of good abstractions in systems design</em> Lorenzo Saino&nbsp;(Fastly)</li>
+<li><a href="https://lorenzosaino.github.io/talks/keynote-velocityeu19.pdf">slides</a></li>
+<li><a href="https://lorenzosaino.github.io">speaker&#8217;s&nbsp;homepage</a></li>
+<li>90% of the problems are solved with just 40 basic&nbsp;principles</li>
+<li><a href="https://en.wikipedia.org/wiki/TRIZ"><span class="caps">TRIZ</span> - theory of inventive problem&nbsp;solving</a></li>
+</ul>
+<p>Afternoon&nbsp;sessions:</p>
+<ul>
+<li><em>Kubernetes the very hard way</em> Laurent Bemaille&nbsp;(Datadog)</li>
+<li><a href="https://www.slideshare.net/lbernail/kubernetes-the-very-hard-way-velocity-berlin-2019">slides</a></li>
+<li><a href="https://github.com/lbernail">GitHub</a></li>
+<li><em>Privilege escalation in build pipelines</em> Andreas Sieferlinger&nbsp;(Scout24)</li>
+<li><a href="https://speakerdeck.com/andreassieferlinger/the-deputy-shot-the-sheriff-privilege-escalation-in-build-pipelines">slides</a></li>
+<li><em>Grafana and metrics without the hype and anti-patterns</em> (wasn&#8217;t that good
+  finally) Björn Rabenstein (Grafana&nbsp;Labs)</li>
+<li><a href="https://cdn.oreillystatic.com/en/assets/1/event/302/What%20remains%20of%20dashboards%20and%20metrics%20without%20the%20hype%20and%20anti-patterns%20Presentation.pdf">slides</a></li>
+<li><em>Configuration is riskier than code</em> Jamie Wilkinson&nbsp;(Google)</li>
+<li><a href="https://conferences.oreilly.com/velocity/vl-eu/public/schedule/detail/78800">event&nbsp;page</a></li>
+<li><em>M3 and Prometheus</em>  Rob Skillington (Chronosphere), Łukasz Szczęsny&nbsp;(M3)</li>
+<li><a href="https://cdn.oreillystatic.com/en/assets/1/event/302/M3%20and%20Prometheus_%20Monitoring%20at%20planet%20scale%20for%20everyone%20Presentation.pdf">slides</a></li>
+<li><a href="https://www.m3db.io/">M3&nbsp;project</a></li>
+</ul>
+<h1>Thursday</h1>
+<p>Keynotes:</p>
+<ul>
+<li><em>Building high-performing engineering teams</em> Lena Reinhard&nbsp;(CircleCI)</li>
+<li><a href="https://cdn.oreillystatic.com/en/assets/1/event/302/Building%20high-performing%20engineering%20teams%2C%201%20pixel%20at%20a%20time%20Presentation.pdf">slides</a></li>
+<li><a href="https://www.oreilly.com/radar/building-high-performing-engineering-teams-one-pixel-at-a-time/">recording</a></li>
+<li><a href="http://lenareinhard.com/">speaker&#8217;s&nbsp;homepage</a></li>
+<li><em>Controlled chaos: devops and security</em> Kelly Shortridge&nbsp;(Capsule8)</li>
+<li><a href="https://cdn.oreillystatic.com/en/assets/1/event/302/Controlled%20chaos_%20The%20inevitable%20marriage%20of%20DevOps%20and%20security%20Presentation.pdf">slides</a></li>
+<li><a href="https://www.oreilly.com/radar/controlled-chaos-the-inevitable-marriage-of-devops-and-security">recording</a></li>
+<li>The &#8220;<span class="caps">DIE</span>&#8221; triad: distributed, immutable, and ephemeral&nbsp;infrastructure</li>
+</ul>
+<p>Afternoon&nbsp;sessions:</p>
+<ul>
+<li><em>Cultivating production excellence</em> Liz Fong-Jones&nbsp;(Honeycomb)</li>
+<li><em>Keptn: Don&#8217;t let your deliver pipelines become your next legacy&nbsp;code</em></li>
+<li><a href="https://keptn.sh/">Keptn</a></li>
+<li><em>Stateful systems in the time of orchestrators</em> Danielle Lancashire&nbsp;(Hashicorp)</li>
+<li><a href="https://www.nomadproject.io/guides/stateful-workloads/stateful-workloads.html">Stateful workloads in&nbsp;Nomad</a></li>
+<li><em>Consensus is for everyone</em> Tess Rinearson (Tendermint&nbsp;Core)</li>
+<li><a href="https://conferences.oreilly.com/velocity/vl-eu/public/schedule/detail/78516">event&nbsp;page</a></li>
+<li><a href="https://lamport.azurewebsites.net/pubs/pubs.html#lamport-paxos">Original Paxos&nbsp;paper</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">Consensus on&nbsp;Wikipedia</a></li>
+<li><a href="https://tendermint.com">Tendermint</a></li>
+</ul>
+  </div><!-- /.entry-content -->
+
+</article>
+
+  <section id="extras" class="body">
+
+    <div class="social">
+      <h2>Social</h2>
+      <ul>
+        <li><a href="https://thewagner.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+
+      </ul>
+    </div><!-- /.social -->
+  </section><!-- /#extras -->
+
+  <hr>
+    <footer id="contentinfo" class="body">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+      <br />
+      The contents of this website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42971359-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <title>Prototypes for stepper motor control</title>
+
+  <link rel="stylesheet" href="../../../../../theme/css/main.css" />
+
+  <link href="https://thewagner.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Wagner Atom Feed" />
+
+
+</head>
+
+<body id="index" class="home">
+  <header id="banner" class="body">
+    <a href="../../../../../">The Wagner </a>
+    <nav>
+      <ul>
+      </ul>
+    </nav>
+  </header><!-- /#banner -->
+
+<article>
+  <header>
+    <h1 class="entry-title">
+      <a href="../../../../../blog/2013/07/19/prototypes-for-stepper-motor-control/" rel="bookmark"
+         title="Permalink to Prototypes for stepper motor control">Prototypes for stepper motor&nbsp;control</a></h1>
+  </header>
+
+  <div class="entry-content">
+<p class="post-info">
+        <time class="published" datetime="2013-07-19T00:00:00+02:00">Fri 19 July 2013</time>
+        <span class="vcard author">
+            <a class="url fn" href="../../../../../author/david-wagner.html">David Wagner</a>
+        </span>
+</p><!-- /.post-info -->    <p>I have a unipolar stepper motor I want to control with my Raspberry Pi.
+First I needed to figure out the motor coils&#8217; wiring, then I wrote a small
+test script to provide the correct sequence on the <span class="caps">GPIO</span>&nbsp;ports.</p>
+<div class="section" id="wiring">
+<h2>Wiring</h2>
+<p>I read about <a class="reference external" href="http://www.stepperworld.com/Tutorials/pgUnipolarTutorial.htm">stepper motors</a>, and made the following circuit on the&nbsp;breadboard.</p>
+<img alt="Stepper motor prototype" src="../../../../../images/pi/stepper_prototype_1.jpg" style="width: 100%;" />
+<p>A 9V battery, an indicator led to show if the power is on, and four
+switches.  When a switch is pressed one phase (half coil) is energized.  For
+some unknown reason I managed to get the wiring right for the first time, so
+pressing the switches one after the other, from top to bottom, made the
+motor turn one&nbsp;step.</p>
+<p>The 6 wires of this motor (Japan Servo <span class="caps">KP68P2</span>-406, 12V, 33 Ω/phase, 1.8
+deg/step) are the&nbsp;following:</p>
+<blockquote>
+<ul class="simple">
+<li>2 red (center&nbsp;taps)</li>
+<li>orange (phase&nbsp;1)</li>
+<li>brown (phase&nbsp;2)</li>
+<li>yellow (phase&nbsp;3)</li>
+<li>black (phase&nbsp;4)</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="sequence-test">
+<h2>Sequence&nbsp;test</h2>
+<p>I wrote a small test script to output the step sequence on the Pi&#8217;s <span class="caps">GPIO</span>
+ports.  It has a lot of cool&nbsp;features:</p>
+<div class="highlight"><pre><span></span>$ sudo python stepper_seq.py -h  <span class="c1"># help</span>
+$ sudo python stepper_seq.py  <span class="c1"># turns the motor indefinitely, Control-C terminates</span>
+$ sudo python stepper_seq.py -s half -r -n <span class="m">4</span>  <span class="c1"># 4 times the half-step sequence, reversed</span>
+$ sudo python stepper_seq.py -s kitt  <span class="c1"># nothing to do with stepper motors ;)</span>
+</pre></div>
+<p>And the code of <tt class="docutils literal">stepper_seq.py</tt>:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># stepper_seq.py - Stepper motor sequence test</span>
+<span class="c1"># Copyright (C) 2013 David Wagner</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">cycle</span><span class="p">,</span> <span class="n">repeat</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">sequences</span> <span class="o">=</span> <span class="p">{</span><span class="c1"># Wave Drive, One-Phase</span>
+             <span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                     <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                     <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                     <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]],</span>
+             <span class="c1"># Hi-Torque, Two-Phase</span>
+             <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                     <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                     <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+                     <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]],</span>
+             <span class="c1"># Half-Step</span>
+             <span class="s1">&#39;half&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                      <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                      <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                      <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                      <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                      <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+                      <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+                      <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]]}</span>
+
+<span class="n">sequences</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;kitt&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
+                           <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">])))})</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Stepper motor sequence test.&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--pins&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;GPIO pins to activate (numbering by BOARD)&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--seq&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;one&#39;</span><span class="p">,</span>
+                    <span class="n">choices</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">sequences</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Coil activation sequence.&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="s1">&#39;--delay&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Delay in seconds.&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;--reverse&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Reverse direction.&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="s1">&#39;--num&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Number of complete cycles.&#39;</span><span class="p">)</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">init_board</span><span class="p">():</span>
+    <span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BOARD</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">pins</span><span class="p">:</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">init_pins</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">pins</span><span class="p">:</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">signal_handler</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="s2">&quot;Interrupted. Exiting...&quot;</span>
+    <span class="n">init_pins</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ncycles</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="s2">&quot;Returns the sequence elements n times&quot;</span>
+    <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">iterable</span><span class="p">),</span> <span class="n">n</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">pin_order</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">pins</span><span class="p">))</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">reverse</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">pins</span>
+    <span class="n">rep</span> <span class="o">=</span> <span class="n">cycle</span> <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="k">lambda</span> <span class="n">it</span><span class="p">:</span> <span class="n">ncycles</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">rep</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">seq</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">pin</span><span class="p">,</span> <span class="n">status</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pin_order</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
+            <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">delay</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span>
+    <span class="n">init_board</span><span class="p">()</span>
+    <span class="n">init_pins</span><span class="p">()</span>
+    <span class="n">step</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="sequence-test-hardware">
+<h2>Sequence test&nbsp;hardware</h2>
+<p>I put together a circuit to test the script above.  It contains four LEDs,
+each connected to one of the Pi&#8217;s <span class="caps">GPIO</span> ports through a transistor.  The
+<span class="caps">LED</span>&#8217;s could be directly connected to the <span class="caps">IO</span> ports, but in this project I
+wanted to refresh how to use a <a class="reference external" href="http://www.ermicro.com/blog/?p=423">transistor as a switch</a> so that the LEDs can be powered from
+an external power&nbsp;supply.</p>
+<img alt="Stepper motor prototype schematic" src="../../../../../images/pi/stepper_prototype_2_schem.png" style="width: 100%;" />
+<p>And on the breadboard it looks like&nbsp;this:</p>
+<img alt="Stepper motor prototype breadboard" src="../../../../../images/pi/stepper_prototype_2.jpg" style="width: 100%;" />
+</div>
+
+  </div><!-- /.entry-content -->
+
+</article>
+
+  <section id="extras" class="body">
+
+    <div class="social">
+      <h2>Social</h2>
+      <ul>
+        <li><a href="https://thewagner.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+
+      </ul>
+    </div><!-- /.social -->
+  </section><!-- /#extras -->
+
+  <hr>
+    <footer id="contentinfo" class="body">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+      <br />
+      The contents of this website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42971359-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <title>Deploying thewagner.net</title>
+
+  <link rel="stylesheet" href="../../../../../theme/css/main.css" />
+
+  <link href="https://thewagner.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Wagner Atom Feed" />
+
+
+</head>
+
+<body id="index" class="home">
+  <header id="banner" class="body">
+    <a href="../../../../../">The Wagner </a>
+    <nav>
+      <ul>
+      </ul>
+    </nav>
+  </header><!-- /#banner -->
+
+<article>
+  <header>
+    <h1 class="entry-title">
+      <a href="../../../../../blog/2020/07/03/deploying-thewagnernet/" rel="bookmark"
+         title="Permalink to Deploying thewagner.net">Deploying&nbsp;thewagner.net</a></h1>
+  </header>
+
+  <div class="entry-content">
+<p class="post-info">
+        <time class="published" datetime="2020-07-03T00:00:00+02:00">Fri 03 July 2020</time>
+        <span class="vcard author">
+            <a class="url fn" href="../../../../../author/david-wagner.html">David Wagner</a>
+        </span>
+</p><!-- /.post-info -->    <p>For a long time I&#8217;ve been manually deploying this blog to <a href="https://pages.github.com/">GitHub
+Pages</a>.  This worked <span class="caps">OK</span> because I publish less than once a month.
+But I always wished for a better, automatic solution.  Recently I used Nix to
+rebuild <a href="../../../../../blog/2020/05/31/homelab/">my home network</a> and I was curious if I can improve the
+workflow of publishing my articles to <a href="https://thewagner.net">thewagner.net</a>.</p>
+<h1>Ingredients</h1>
+<p>I write the articles in Markdown files which are converted to static <span class="caps">HTML</span> files
+by <a href="https://blog.getpelican.com/">Pelican</a>.  The source content is stored in a <a href="https://github.com/wagdav/thewagner.net">Git
+repository</a>.  I push to this repository when I write new&nbsp;content.</p>
+<p>The blog is served from <a href="https://pages.github.com/">GitHub Pages</a> so I don&#8217;t have to manage
+any servers.  GitHub expects the <span class="caps">HTML</span> pages in a repository with a specific
+name: in my case this is <a href="https://github.com/wagdav/wagdav.github.com">wagdav.github.com</a>.  This repository
+only hosts generated content. I push to this repository when I want to publish
+the changes in the source&nbsp;repository.</p>
+<p>I configured <a href="https://travis-ci.org/">Travis <span class="caps">CI</span></a> to execute the build and deploy steps when a change
+is committed to the source&nbsp;repository.</p>
+<p>In&nbsp;short:</p>
+<ul>
+<li>The source repository <a href="https://github.com/wagdav/thewagner.net">thewagner.net</a> stores&nbsp;articles.</li>
+<li>The deployment repository <a href="https://github.com/wagdav/wagdav.github.com">wagdav.github.io</a> stores generated
+  <span class="caps">HTML</span>&nbsp;pages.</li>
+<li>When triggered, Travis <span class="caps">CI</span> checks out the source repository, builds the blog
+  and pushes the generated files to the deployment&nbsp;repository.</li>
+</ul>
+<p>Let&#8217;s see the build and deploy steps in&nbsp;detail.</p>
+<h1>Build</h1>
+<p>The build pipeline is defined as a <a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/default.nix">Nix expression</a>.  I don&#8217;t
+explain how it works, but I highlight the steps it&nbsp;performs:</p>
+<ul>
+<li>Build the static website using&nbsp;Pelican.</li>
+<li>Run static analysis on the bash scripts using <a href="https://github.com/koalaman/shellcheck">shellcheck</a>.</li>
+<li>Run <a href="https://github.com/markdownlint/markdownlint">markdownlint</a> to flag formatting issues in the&nbsp;articles.</li>
+</ul>
+<p>These steps depend on tools from three different language ecosystems: Pelican
+is a Python project, shellcheck and markdownlint are written in Haskell and
+Ruby, respectively.  Yet, the <em>only</em> dependency of running this pipeline is the
+Nix package&nbsp;manager.</p>
+<p>To execute all the checks and build the blog I&nbsp;run:</p>
+<div class="highlight"><pre><span></span><code>nix build
+</code></pre></div>
+
+
+<p>All dependencies are pinned to a specific version of Nix Packages therefore
+this command always uses the same version of <em>every</em> tool and library no matter
+where or when it is&nbsp;executed.</p>
+<h1>Deploy</h1>
+<p>A <a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/scripts/publish.sh">shell script</a> pushes the generated <span class="caps">HTML</span> files to the
+deployment&nbsp;repository:</p>
+<div class="highlight"><pre><span></span><code>./scripts/publish.sh
+</code></pre></div>
+
+
+<p>Because the script runs within a Nix shell, again, Nix is the only dependency
+and I don&#8217;t have to install any additional tools or libraries to run&nbsp;it.</p>
+<h1>Automate</h1>
+<p>The commands described in the previous sections can be executed on my local
+workstation.  However, to deploy my changes reliably I choose <a href="https://travis-ci.org/">Travis
+<span class="caps">CI</span></a> to automate the build, check and deployment&nbsp;steps.</p>
+<p>The Nix support of Travis <span class="caps">CI</span> is fantastic: it takes only <a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/.travis.yml">seven lines of sweet
+<span class="caps">YAML</span></a> to setup&nbsp;everything:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nix</span>
+
+<span class="nt">deploy</span><span class="p">:</span>
+  <span class="nt">provider</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nix-shell scripts/publish.sh $GITHUB_TOKEN</span>
+  <span class="nt">on</span><span class="p">:</span>
+    <span class="nt">branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+</code></pre></div>
+
+
+<p>Behind the scenes this configuration builds the artifacts described in
+<a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/default.nix">default.nix</a> and executes the <a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/scripts/publish.sh">publish.sh</a> when
+the change was triggered on the <code>master</code> branch.  The secret value
+<code>GITHUB_TOKEN</code> is configured on the Travis <span class="caps">CI</span> web&nbsp;interface.</p>
+<h1>Summary</h1>
+<p>Deploying my blog is now fully automatic:  I only push the contents of the
+articles to a repository.  A hosted service builds and deploys the <span class="caps">HTML</span> pages.
+I can develop, test and execute each step of the pipeline locally and  the
+dependency on hosted services is isolated to a few lines of&nbsp;code.</p>
+  </div><!-- /.entry-content -->
+
+</article>
+
+  <section id="extras" class="body">
+
+    <div class="social">
+      <h2>Social</h2>
+      <ul>
+        <li><a href="https://thewagner.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+
+      </ul>
+    </div><!-- /.social -->
+  </section><!-- /#extras -->
+
+  <hr>
+    <footer id="contentinfo" class="body">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+      <br />
+      The contents of this website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42971359-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</body>
+</html>
