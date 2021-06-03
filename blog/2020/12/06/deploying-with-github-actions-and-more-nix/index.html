@@ -58,7 +58,6 @@ reproducible&nbsp;evaluation.</p>
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>The function <code>outputs</code> takes the project&#8217;s external dependencies as inputs and
 returns the build artifacts in a record.  Build artifacts can be Nix packages,
 NixOS modules, test results, container images, virtual machine images.
@@ -90,7 +89,6 @@ without cloning, directly referencing the repository on&nbsp;GitHub:</p>
 <div class="highlight"><pre><span></span><code><span class="go">nix build github:wagdav/thewagner.net</span>
 </code></pre></div>
 
-
 <p>Building the static pages of this blog has no practical use for anybody but me.
 But imagine if your favorite project would build on your machine without
 installing <em>anything</em> but one standalone&nbsp;binary?</p>
@@ -115,7 +113,6 @@ function describes self-tests.  For this blog&#8217;s source the checks look lik
 <span class="p">};</span>
 </code></pre></div>
 
-
 <p>The checks are grouped per supported platform, in this case there&#8217;s only one:
 <code>x86_64-linux</code>.  For this blog&#8217;s source <em>checking</em>&nbsp;means:</p>
 <ul>
@@ -131,11 +128,9 @@ the checks with the following&nbsp;command:</p>
 <div class="highlight"><pre><span></span><code><span class="go">nix flake check  # using Nix experimental</span>
 </code></pre></div>
 
-
 <p>Or with stable Nix without&nbsp;flake-support:</p>
 <div class="highlight"><pre><span></span><code><span class="go">nix-build -a checks.x86_64-linux  # using Nix stable</span>
 </code></pre></div>
-
 
 <p>Again, running the checks only requires the Nix package manager to be&nbsp;installed.</p>
 <h1>GitHub&nbsp;Actions</h1>

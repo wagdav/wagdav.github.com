@@ -70,7 +70,6 @@ Python</a>:</p>
 <span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;/usr/src/app/app.py&quot;</span><span class="p">]</span>
 </code></pre></div>
 
-
 <p>This is a short, working example which you can use to deploy a non-trivial web
 application.  But if you look closely, there are some issues with this
 <code>Dockerfile</code>.  Let&#8217;s see them, line by&nbsp;line:</p>
@@ -147,7 +146,6 @@ an application called <code>weather-data-collector</code> using the following
 <span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;/weather-data-collector&quot;</span><span class="p">]</span>
 </code></pre></div>
 
-
 <p>This copies the application&#8217;s locally built executable on the image&#8217;s
 filesystem.  The image contains no shell, no package manager, no additional
 libraries.  Both image size and its the attack surface is minimal.  This
@@ -199,11 +197,9 @@ and a webserver into a container&nbsp;image.</p>
   <span class="p">};</span>
 </code></pre></div>
 
-
 <p>You can run the built image&nbsp;yourself:</p>
 <div class="highlight"><pre><span></span><code>docker run -p 8000:8000 wagdav/thewagner.net
 </code></pre></div>
-
 
 <p>If you visit <code>http://localhost:8000</code> you can read my articles served from the
 locally running&nbsp;container.</p>

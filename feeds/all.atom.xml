@@ -40,9 +40,8 @@ shows its basic&amp;nbsp;usage:&lt;/p&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="c1"&gt;// ②&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="c1"&gt;// ③&lt;/span&gt;
-&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// ④&lt;/span&gt;
+&lt;span class="fm"&gt;println!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// ④&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;ol&gt;
 &lt;li&gt;Create a &lt;a href="https://rust-unofficial.github.io/patterns/patterns/creational/builder.html"&gt;ChainBuilder&lt;/a&gt;.  The chain will use two-word prefixes
@@ -103,7 +102,6 @@ to plain&amp;nbsp;text:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pandoc  *.markdown --from markdown --to plain
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This yields about 20 thousand words of text, some of which appear in equations,
 enumerations and code blocks.  I wrote a function to ignore almost everything
 but the actual text.   Here are two examples which show that the program is not
@@ -162,7 +160,6 @@ Python&lt;/a&gt;:&lt;/p&gt;
 &lt;span class="k"&gt;EXPOSE&lt;/span&gt;&lt;span class="s"&gt; 5000&lt;/span&gt;
 &lt;span class="k"&gt;CMD&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/usr/src/app/app.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This is a short, working example which you can use to deploy a non-trivial web
 application.  But if you look closely, there are some issues with this
@@ -240,7 +237,6 @@ an application called &lt;code&gt;weather-data-collector&lt;/code&gt; using the 
 &lt;span class="k"&gt;ENTRYPOINT&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/weather-data-collector&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This copies the application&amp;#8217;s locally built executable on the image&amp;#8217;s
 filesystem.  The image contains no shell, no package manager, no additional
 libraries.  Both image size and its the attack surface is minimal.  This
@@ -292,11 +288,9 @@ and a webserver into a container&amp;nbsp;image.&lt;/p&gt;
   &lt;span class="p"&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;You can run the built image&amp;nbsp;yourself:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker run -p 8000:8000 wagdav/thewagner.net
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;If you visit &lt;code&gt;http://localhost:8000&lt;/code&gt; you can read my articles served from the
 locally running&amp;nbsp;container.&lt;/p&gt;
@@ -505,7 +499,6 @@ reproducible&amp;nbsp;evaluation.&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The function &lt;code&gt;outputs&lt;/code&gt; takes the project&amp;#8217;s external dependencies as inputs and
 returns the build artifacts in a record.  Build artifacts can be Nix packages,
 NixOS modules, test results, container images, virtual machine images.
@@ -537,7 +530,6 @@ without cloning, directly referencing the repository on&amp;nbsp;GitHub:&lt;/p&g
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;nix build github:wagdav/thewagner.net&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Building the static pages of this blog has no practical use for anybody but me.
 But imagine if your favorite project would build on your machine without
 installing &lt;em&gt;anything&lt;/em&gt; but one standalone&amp;nbsp;binary?&lt;/p&gt;
@@ -562,7 +554,6 @@ function describes self-tests.  For this blog&amp;#8217;s source the checks look
 &lt;span class="p"&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The checks are grouped per supported platform, in this case there&amp;#8217;s only one:
 &lt;code&gt;x86_64-linux&lt;/code&gt;.  For this blog&amp;#8217;s source &lt;em&gt;checking&lt;/em&gt;&amp;nbsp;means:&lt;/p&gt;
 &lt;ul&gt;
@@ -578,11 +569,9 @@ the checks with the following&amp;nbsp;command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;nix flake check  # using Nix experimental&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Or with stable Nix without&amp;nbsp;flake-support:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;nix-build -a checks.x86_64-linux  # using Nix stable&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Again, running the checks only requires the Nix package manager to be&amp;nbsp;installed.&lt;/p&gt;
 &lt;h1&gt;GitHub&amp;nbsp;Actions&lt;/h1&gt;
@@ -678,7 +667,6 @@ Kevlar&lt;/a&gt; was&amp;nbsp;born.&lt;/p&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This function takes the source repository as a parameter and describes the
 following&amp;nbsp;actions:&lt;/p&gt;
 &lt;ul&gt;
@@ -712,7 +700,6 @@ into helper functions or shared modules and&amp;nbsp;packages.&lt;/p&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;publish&lt;/code&gt; function takes the address of the source repository and the build
 binary. The steps are similar to that of the &lt;code&gt;build&lt;/code&gt; function:&lt;/p&gt;
 &lt;ul&gt;
@@ -725,7 +712,6 @@ build-and-release&amp;nbsp;pipeline:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;buildAndPublish&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This function, which composes &lt;code&gt;build&lt;/code&gt; and &lt;code&gt;publish&lt;/code&gt; using the monadic bind
 operator, actually works it does what you&amp;#8217;d expect: the pipeline builds and
 publishes the built binaries running both steps in dedicated Docker&amp;nbsp;containers.&lt;/p&gt;
@@ -737,7 +723,6 @@ as functions returning a &lt;code&gt;Task&lt;/code&gt; value.&lt;/p&gt;
 clone repo                            publish
            ↘        build image     ↗
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This figure reveals interesting optimization&amp;nbsp;opportunities:&lt;/p&gt;
 &lt;ul&gt;
@@ -847,7 +832,6 @@ back-end servers to reduce tail&amp;nbsp;latency.&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The implementation shows Go&amp;#8217;s concurrency primitives: goroutines, channels, and
 the select statement.  The Go runtime manages the goroutines which are
 lightweight threads of execution.  Goroutines communicate via channels.  The
@@ -872,7 +856,6 @@ from the slides for&amp;nbsp;reference:&lt;/p&gt;
                    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;conj &lt;/span&gt;&lt;span class="nv"&gt;ret&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;alt&lt;/span&gt;, &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="nv"&gt;t&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nv"&gt;v&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)))))))))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Clojure&amp;#8217;s async library uses the same primitives as Go: the syntax is &lt;span class="caps"&gt;LISP&lt;/span&gt;, but
 the structure of the program is identical to that of the Go version.  Watch
 &lt;a href="https://www.youtube.com/watch?v=f6kdp27TYZs"&gt;Rich Hickey&amp;#8217;s presentation&lt;/a&gt; if you&amp;#8217;re interested how this
@@ -887,7 +870,6 @@ works on the &lt;span class="caps"&gt;JVM&lt;/span&gt; and in a web browser usin
         &lt;span class="n"&gt;mapConcurrently&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fastest&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;Web&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Video&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="n"&gt;printResults&lt;/span&gt; &lt;span class="n"&gt;req&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This is my favorite version of this exercise because it&amp;#8217;s succint and
 expressive.  We don&amp;#8217;t see the primitives we saw in the Go and Clojure version,
@@ -911,7 +893,6 @@ language I&amp;#8217;ve been learning for the last couple of&amp;nbsp;weeks:&lt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unwrap_or_else&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SearchResult&lt;/span&gt;::&lt;span class="n"&gt;timeout&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This code looks similar to the Haskell version because we don&amp;#8217;t see channels
 and explicit thread management here either.  The Rust language defines the
@@ -972,7 +953,6 @@ Nix package&amp;nbsp;manager.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nix build
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;All dependencies are pinned to a specific version of Nix Packages therefore
 this command always uses the same version of &lt;em&gt;every&lt;/em&gt; tool and library no matter
 where or when it is&amp;nbsp;executed.&lt;/p&gt;
@@ -981,7 +961,6 @@ where or when it is&amp;nbsp;executed.&lt;/p&gt;
 deployment&amp;nbsp;repository:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;./scripts/publish.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Because the script runs within a Nix shell, again, Nix is the only dependency
 and I don&amp;#8217;t have to install any additional tools or libraries to run&amp;nbsp;it.&lt;/p&gt;
@@ -999,7 +978,6 @@ workstation.  However, to deploy my changes reliably I choose &lt;a href="https:
   &lt;span class="nt"&gt;on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nt"&gt;branch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;master&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Behind the scenes this configuration builds the artifacts described in
 &lt;a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/default.nix"&gt;default.nix&lt;/a&gt; and executes the &lt;a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/scripts/publish.sh"&gt;publish.sh&lt;/a&gt; when
@@ -1073,7 +1051,6 @@ services&lt;span class="o"&gt;.&lt;/span&gt;consul&lt;span class="o"&gt;.&lt;/sp
 networking&lt;span class="o"&gt;.&lt;/span&gt;firewall&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="ss"&gt;allowedTCPPorts =&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="mi"&gt;9090&lt;/span&gt; &lt;span class="p"&gt;];&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This snippet adjusts three separate&amp;nbsp;components:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Enable and configure&amp;nbsp;Prometheus&lt;/li&gt;
@@ -1102,7 +1079,6 @@ document&lt;/a&gt;:&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;the &lt;span class="caps"&gt;GPIO&lt;/span&gt; ports of a &lt;span class="caps"&gt;LED&lt;/span&gt; controller equipped with an infrared receiver are
 assigned like&amp;nbsp;this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;tasmota&lt;span class="o"&gt;.&lt;/span&gt;template &lt;span class="p"&gt;{&lt;/span&gt;
@@ -1115,7 +1091,6 @@ assigned like&amp;nbsp;this:&lt;/p&gt;
   &lt;span class="p"&gt;};&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The sensors publish their data over &lt;span class="caps"&gt;MQTT&lt;/span&gt;.  Then, a &lt;a href="https://www.influxdata.com/time-series-platform/telegraf/"&gt;Telegraf&lt;/a&gt; service
 exports the &lt;span class="caps"&gt;MQTT&lt;/span&gt; messages for Prometheus.  Finally, the Prometheus time series
@@ -1170,13 +1145,11 @@ and the symbols can be used after the keyword &lt;code&gt;in&lt;/code&gt;.  For 
   x &lt;span class="o"&gt;+&lt;/span&gt; y &lt;span class="o"&gt;+&lt;/span&gt; x
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;evaluates to &lt;code&gt;"aba"&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In Nix, functions are first-class values.  A function which adds one to a
 value is defined&amp;nbsp;succinctly:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;n&lt;span class="p"&gt;:&lt;/span&gt; n &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Typically, functions take sets as arguments and return sets as results.  This
 expression defines and calls the &lt;code&gt;endpoints&lt;/code&gt; function:&lt;/p&gt;
@@ -1189,11 +1162,9 @@ expression defines and calls the &lt;code&gt;endpoints&lt;/code&gt; function:&lt
   endpoints &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="ss"&gt;engine =&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;google&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="ss"&gt;domain =&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;which evaluates&amp;nbsp;to:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="ss"&gt;http =&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="ss"&gt;https =&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This last example also shows how symbols in the current scope are interpolated
 in strings using &lt;code&gt;${}&lt;/code&gt;.&lt;/p&gt;
@@ -1206,7 +1177,6 @@ statement more concrete with an&amp;nbsp;example.&lt;/p&gt;
 &lt;p&gt;We will use Nix to put a string into a file using a build action equivalent&amp;nbsp;to:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;echo hello from Nix &amp;gt; output.txt&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This build runs the &lt;code&gt;echo&lt;/code&gt; shell command to generate a file.  The build
 requires no input source files, but a shell to be present.  We could use &lt;code&gt;bash&lt;/code&gt;
@@ -1228,7 +1198,6 @@ input and returns the build recipe, a&amp;nbsp;derivation:&lt;/p&gt;
   &lt;span class="ss"&gt;system =&lt;/span&gt; &lt;span class="nb"&gt;builtins&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;currentSystem&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;code&gt;derivation&lt;/code&gt; is keyword of the Nix language.  It&amp;#8217;s represented as a set with
 specific attributes: a name, a program and its arguments to produce some
@@ -1267,7 +1236,6 @@ derivation in the following&amp;nbsp;structure:&lt;/p&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;In this representation we can see how Nix stores the build artifacts under
 &lt;code&gt;/nix/store&lt;/code&gt;.  The filenames in the store are cryptographic hashes of the
@@ -1317,25 +1285,22 @@ nodes with special&amp;nbsp;hardware.&lt;/p&gt;
 &lt;h1&gt;Build the&amp;nbsp;example&lt;/h1&gt;
 &lt;p&gt;To build the example in the previous section, save the expression in a file
 named &lt;code&gt;hello.nix&lt;/code&gt; and&amp;nbsp;run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$&lt;/span&gt; nix-build hello.nix --arg bash &lt;span class="s1"&gt;&amp;#39;(import &amp;lt;nixpkgs&amp;gt; {}).bash&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;nix-build hello.nix --arg bash &lt;span class="s1"&gt;&amp;#39;(import &amp;lt;nixpkgs&amp;gt; {}).bash&amp;#39;&lt;/span&gt;
 &lt;span class="go"&gt;/nix/store/qcnf97fclrnqppq3h5ld9smqdb8l2ybk-hello&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;--arg&lt;/code&gt; switch tells Nix to use the &lt;code&gt;bash&lt;/code&gt; package from the &lt;a href="https://nixos.org/nixos/packages.html"&gt;Nix Packages
 collection&lt;/a&gt;.  &lt;code&gt;nix-build&lt;/code&gt; prints the path where the build result is
 stored.  By default, &lt;code&gt;nix-build&lt;/code&gt; also creates a symbolic link to the build
 result in the current working directory so it&amp;#8217;s easy to verify if we find the
 string we&amp;nbsp;expect:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &amp;lt; result
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&amp;lt; result
 &lt;span class="go"&gt;hello from Nix&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;To see the internal structure of the derivation, run the&amp;nbsp;command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;nix show-derivation /nix/store/qcnf97fclrnqppq3h5ld9smqdb8l2ybk-hello&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;which outputs data structure as shown in the previous&amp;nbsp;section.&lt;/p&gt;
 &lt;h1&gt;Composing an operating&amp;nbsp;system&lt;/h1&gt;
@@ -1360,7 +1325,6 @@ achieve this scale, higher-level abstractions are built from the Nix language&am
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Modules are useful for configuring complete subsystems such as networking,
 printing, graphics and so on.  The top-level NixOS configuration, typically
 stored in &lt;code&gt;/etc/nixos/configuration.nix&lt;/code&gt;, is a module itself which may include
@@ -1369,7 +1333,6 @@ other&amp;nbsp;modules.&lt;/p&gt;
 open ports of your&amp;nbsp;system:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;networking&lt;span class="o"&gt;.&lt;/span&gt;firewall&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="ss"&gt;allowedTCPPorts =&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt; &lt;span class="p"&gt;];&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The module keeps the intricacies of generating iptables rules within its
 implementation.  Our system configuration remains simple and&amp;nbsp;declarative.&lt;/p&gt;
@@ -1458,7 +1421,6 @@ sequential programming language artifacts from the&amp;nbsp;sixties.&lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This code is written today&amp;#8217;s most common programming style: sequential,
 imperative, mutable and allowing uncontrolled side effects.  Every line of this
 function states what happens during&amp;nbsp;execution:&lt;/p&gt;
@@ -1481,7 +1443,6 @@ of &lt;code&gt;factorial&lt;/code&gt;:&lt;/p&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This implementation reads almost as a pure specification without any view on
 the execution.  This form is more unusual but &lt;em&gt;simpler&lt;/em&gt; than before because all
@@ -1767,7 +1728,6 @@ they deem most fitting but the user can think of it as a function no matter&amp;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Task&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;A Task is a &lt;em&gt;function&lt;/em&gt; with two type parameters &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; representing its
 input and output types, respectively.  To express possible failure, the output
 is wrapped in Haskell&amp;#8217;s &lt;code&gt;Maybe&lt;/code&gt; type.  In other languages this is called
@@ -1781,7 +1741,6 @@ What matters is that our model, the Task&amp;#8217;s meaning, is mathematical&am
 &lt;span class="nf"&gt;release&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;CompiledBinary&lt;/span&gt;
         &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;TestReport&lt;/span&gt;     &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;PackageURL&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;These are &lt;em&gt;not&lt;/em&gt; the implementation of these tasks but their definition
 expressed as Haskell&amp;nbsp;code.&lt;/p&gt;
@@ -1797,12 +1756,10 @@ with this type&amp;nbsp;signature:&lt;/p&gt;
            &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;we could express the pull request validating task&amp;nbsp;as:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;validatePullRequests&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;SourceCode&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;TestReport&lt;/span&gt;
 &lt;span class="nf"&gt;validatePullRequests&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inSequence&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;where&lt;/p&gt;
 &lt;ul&gt;
@@ -1823,7 +1780,6 @@ types are wrapped in &lt;code&gt;Maybe&lt;/code&gt;.&lt;/p&gt;
 &lt;span class="nf"&gt;integrationTests&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;SourceCode&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;IntegrationTestReport&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;These two test suites could be run in parallel, because they both only depend
 on the &lt;code&gt;SourceCode&lt;/code&gt; value.&lt;/p&gt;
 &lt;p&gt;We don&amp;#8217;t want to introduce a new concept, but we want the result of parallel
@@ -1834,7 +1790,6 @@ type&amp;nbsp;signature:&lt;/p&gt;
            &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The composite task yields the results of input tasks as a tuple.  If &lt;em&gt;any&lt;/em&gt; of
 the two task fails, the result of the composite task is failure (represented by
 the value &lt;code&gt;Nothing&lt;/code&gt;).&lt;/p&gt;
@@ -1844,14 +1799,12 @@ the value &lt;code&gt;Nothing&lt;/code&gt;).&lt;/p&gt;
 &lt;span class="nf"&gt;runAllTests&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inParallel&lt;/span&gt; &lt;span class="n"&gt;unitTests&lt;/span&gt; &lt;span class="n"&gt;integrationTests&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;inParallel&lt;/code&gt; operator represents a &amp;#8220;fan-out&amp;#8221; structure in the pipeline
 where independent transformation steps are applied on the same&amp;nbsp;input.&lt;/p&gt;
 &lt;h1&gt;Semantic&amp;nbsp;model&lt;/h1&gt;
 &lt;p&gt;In the previous sections we&amp;#8217;ve defined a denotational model for &lt;span class="caps"&gt;CI&lt;/span&gt;/&lt;span class="caps"&gt;CD&lt;/span&gt; build&amp;nbsp;tasks:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Task&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;which maps the Task concept to its meaning, a mathematical object.  This serves
 not only as a mental model, but also it allows us introduce regular and
@@ -1866,7 +1819,6 @@ without explanation, here are their&amp;nbsp;definitions:&lt;/p&gt;
 &lt;span class="nf"&gt;inParallel&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Task&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Task&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Task&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nf"&gt;inParallel&lt;/span&gt; &lt;span class="n"&gt;t1&lt;/span&gt; &lt;span class="n"&gt;t2&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;liftA2&lt;/span&gt; &lt;span class="p"&gt;(,)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t1&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t2&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;These combinators are expressed using the task&amp;#8217;s semantic model without
 operational terms or unnecessary limiting&amp;nbsp;assumptions.&lt;/p&gt;
@@ -1923,7 +1875,6 @@ me show you what I mean with an&amp;nbsp;example.&lt;/p&gt;
 &lt;span class="na"&gt;url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;example.com&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Let&amp;#8217;s say that this is a configuration file of a simple service which is
 deployed into a specific environment.  First, we deploy it to staging and, when
 all the tests pass,  we promote the application to production.  Naturally, the
@@ -1935,7 +1886,6 @@ imaginary type signature&amp;nbsp;is:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;configuration&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Environment&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Url&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This reads: the configuration is a function from an environment to a &lt;span class="caps"&gt;URL&lt;/span&gt;.
 If we saw such a function signature in an application, we could implement it
 like&amp;nbsp;this:&lt;/p&gt;
@@ -1944,7 +1894,6 @@ like&amp;nbsp;this:&lt;/p&gt;
      &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;example.com&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;environment&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;production&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;staging.example.com&amp;#39;&lt;/span&gt;
    &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;For clarity I used Python&amp;#8217;s familiar syntax, but this is not&amp;nbsp;important.&lt;/p&gt;
 &lt;p&gt;Conceptually we can think that after the configuration file is parsed, this
@@ -1965,7 +1914,6 @@ and our application&amp;#8217;s&amp;nbsp;initialization.&lt;/p&gt;
 &lt;span class="na"&gt;db_backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;rds&lt;/span&gt;
 &lt;span class="na"&gt;db_address&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;%(db_backend).amazon.com&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here I made the database backend of our service configurable.  It&amp;#8217;s a contrived
 example, but not completely unrealistic: in staging we use our own Postgres
@@ -2005,7 +1953,6 @@ as a&amp;nbsp;function:&lt;/p&gt;
     &lt;span class="n"&gt;db_address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;db_backend&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;db_suffix&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Is this better than the &lt;span class="caps"&gt;INI&lt;/span&gt; syntax?  Well, not necessarily, but it triggers
 different kinds of&amp;nbsp;thoughts:&lt;/p&gt;
@@ -2227,7 +2174,6 @@ simpler example.  The action we will retry is a question: we ask the user for an
   &lt;span class="n"&gt;readMaybe&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;$&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getLine&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This function returns &lt;code&gt;Nothing&lt;/code&gt; if the user enters anything but an&amp;nbsp;integer.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;GHCI&amp;gt; question&lt;/span&gt;
 &lt;span class="go"&gt;Give me an integer: 5&lt;/span&gt;
@@ -2238,13 +2184,11 @@ simpler example.  The action we will retry is a question: we ask the user for an
 &lt;span class="go"&gt;Nothing&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;If this question is a part of a longer quiz we let the user guess again before
 we fail the whole program.  We would like to write a function &lt;code&gt;retry&lt;/code&gt; with the
 following type&amp;nbsp;signature:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;retry&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This function takes two arguments: the number of times to retry and the action
 to run.  It returns a more perseverant action with the retry logic &amp;#8220;baked-in&amp;#8221;.
@@ -2259,7 +2203,6 @@ change its&amp;nbsp;type.&lt;/p&gt;
 &lt;span class="go"&gt;Give me an integer: 5&lt;/span&gt;
 &lt;span class="go"&gt;Just 5&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;In this example, after the second additional attempt the integer&amp;#8217;s was finally&amp;nbsp;received.&lt;/p&gt;
 &lt;h1&gt;Implementing&amp;nbsp;retry&lt;/h1&gt;
@@ -2279,7 +2222,6 @@ change its&amp;nbsp;type.&lt;/p&gt;
           &lt;span class="n"&gt;res&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt;                                     &lt;span class="c1"&gt;-- ⑥&lt;/span&gt;
           &lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;res&amp;#39;&lt;/span&gt;                                    &lt;span class="c1"&gt;-- ⑦&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This function uses a recursive inner function, called &lt;code&gt;go&lt;/code&gt; by&amp;nbsp;convention.&lt;/p&gt;
 &lt;ol&gt;
@@ -2312,7 +2254,6 @@ constructor with two&amp;nbsp;constraints:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;retry&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Monad&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;HasLogFunc&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;Monad&lt;/code&gt; typeclass is part of the Prelude (&amp;#8220;built-in&amp;#8221;). We define the
 &lt;code&gt;HasLogFunc&lt;/code&gt; class&amp;nbsp;ourselves:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="kt"&gt;HasLogFunc&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="kr"&gt;where&lt;/span&gt;
@@ -2321,7 +2262,6 @@ constructor with two&amp;nbsp;constraints:&lt;/p&gt;
 &lt;span class="kr"&gt;instance&lt;/span&gt; &lt;span class="kt"&gt;HasLogFunc&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="kr"&gt;where&lt;/span&gt;
   &lt;span class="n"&gt;logInfo&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;putStrLn&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The first two lines defines the &lt;code&gt;HasLogFunc&lt;/code&gt; as an interface where &lt;code&gt;logInfo&lt;/code&gt;
 must be implemented.  The last two lines provide &lt;code&gt;IO&lt;/code&gt; with an instance of this
@@ -2339,7 +2279,6 @@ interface: the implementation of &lt;code&gt;logInfo&lt;/code&gt; is just &lt;co
 
 &lt;span class="c1"&gt;-- same code as before&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;ol&gt;
 &lt;li&gt;Two constraints restrict what &lt;code&gt;m&lt;/code&gt; can be: it must be a monad and must have a
@@ -2359,20 +2298,17 @@ always&amp;nbsp;fails:&lt;/p&gt;
 &lt;span class="nf"&gt;alwaysFails&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="kt"&gt;Nothing&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;We&amp;#8217;d expect retries until the specified number of attempts is&amp;nbsp;exhausted.&lt;/p&gt;
 &lt;p&gt;We want our tests to be pure therefore,  instead of using &lt;code&gt;IO&lt;/code&gt;, we implement a
 &lt;code&gt;FakeAction&lt;/code&gt; type using the &lt;a href="https://hackage.haskell.org/package/mtl-1.1.0.2/docs/Control-Monad-Writer-Lazy.html"&gt;Writer monad&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;FakeAction&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;Writer&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This is a &lt;em&gt;monad&lt;/em&gt; which aggregates the log messages of type &lt;code&gt;String&lt;/code&gt;.  We
 specify what &lt;code&gt;logInfo&lt;/code&gt; means in this&amp;nbsp;context:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;instance&lt;/span&gt; &lt;span class="kt"&gt;HasLogFunc&lt;/span&gt; &lt;span class="kt"&gt;FakeAction&lt;/span&gt; &lt;span class="kr"&gt;where&lt;/span&gt;
   &lt;span class="n"&gt;logInfo&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tell&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Now we can express the always failing&amp;nbsp;scenario:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;describe&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;retry&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt;
@@ -2384,7 +2320,6 @@ specify what &lt;code&gt;logInfo&lt;/code&gt; means in this&amp;nbsp;context:&lt
       &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Retrying 3/3&amp;quot;&lt;/span&gt;
       &lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;code&gt;runWriter&lt;/code&gt; returns the result of the provided action, in this case &lt;code&gt;Nothing&lt;/code&gt;,
 paired up with the log messages which were produced during the evaluation.
@@ -2429,7 +2364,6 @@ three-dimensional world point coordinates to two-dimensional image point&amp;nbs
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;project&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;WorldPoint&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;ImagePoint&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;where I assume that some reasonable definitions of &lt;code&gt;WorldPoint&lt;/code&gt; and
 &lt;code&gt;ImagePoint&lt;/code&gt; exist.  That is, given a world point &lt;code&gt;project&lt;/code&gt; returns a point on
 the camera&amp;#8217;s image&amp;nbsp;plane.&lt;/p&gt;
@@ -2438,7 +2372,6 @@ the camera&amp;#8217;s image&amp;nbsp;plane.&lt;/p&gt;
    &lt;span class="o"&gt;...&lt;/span&gt;
    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;image_point&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The concrete implementation of &lt;code&gt;project&lt;/code&gt; is not important.  For the sake of
 this article we can assume that all relevant camera parameters are available in
@@ -2450,11 +2383,9 @@ world point is just a matter of calling &lt;code&gt;project&lt;/code&gt;.  It&am
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;world_point&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;and&amp;nbsp;Haskell:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;project&lt;/span&gt; &lt;span class="n"&gt;worldPoint&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;In a real world program, however, the situation is rarely that&amp;nbsp;simple.&lt;/p&gt;
 &lt;h1&gt;Missing&amp;nbsp;value&lt;/h1&gt;
@@ -2470,13 +2401,11 @@ a conditional to check for&amp;nbsp;it:&lt;/p&gt;
     &lt;span class="c1"&gt;# handle the missing value&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This is a common pattern, you find such conditionals in every code&amp;nbsp;base.&lt;/p&gt;
 &lt;p&gt;In Haskell we could accept the world point wrapped in a &lt;code&gt;Maybe&lt;/code&gt; type and use
 &lt;code&gt;fmap&lt;/code&gt; to compute a projection in case the world point value is&amp;nbsp;present:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;let&lt;/span&gt; &lt;span class="n"&gt;maybeImagePoint&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fmap&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;maybeWorldPoint&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;where the type of the input and output values are &lt;code&gt;Maybe WorldPoint&lt;/code&gt; and
 &lt;code&gt;Maybe ImagePoint&lt;/code&gt;,&amp;nbsp;respectively.&lt;/p&gt;
@@ -2490,11 +2419,9 @@ list comprehension and&amp;nbsp;write:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;image_points&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;world_point&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;world_point&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;scene&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;or more succinctly, using the built-in &lt;code&gt;map&lt;/code&gt; function:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;image_points&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scene&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;In &lt;a href="https://pythonclock.org/"&gt;Python 3&lt;/a&gt;, &lt;code&gt;map&lt;/code&gt; returns an iterator which we
 explicitly convert to a&amp;nbsp;list.&lt;/p&gt;
@@ -2502,7 +2429,6 @@ explicitly convert to a&amp;nbsp;list.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;-- type Scene = [WorldPoint]&lt;/span&gt;
 &lt;span class="kr"&gt;let&lt;/span&gt; &lt;span class="n"&gt;imagePoints&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fmap&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;scene&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;where the type of &lt;code&gt;imagePoints&lt;/code&gt; is a list of image&amp;nbsp;points.&lt;/p&gt;
 &lt;p&gt;This is almost identical to the Python code using &lt;code&gt;map&lt;/code&gt;.  List is a functor,
@@ -2520,7 +2446,6 @@ can apply &lt;code&gt;project&lt;/code&gt; we need to read and decode the data&a
    &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This is also fairly common pattern:  the exception handler, if we don&amp;#8217;t forget
 to write it, allows us to handle the potential&amp;nbsp;errors.&lt;/p&gt;
 &lt;p&gt;In Haskell, it&amp;#8217;s again just &lt;code&gt;fmap&lt;/code&gt;:&lt;/p&gt;
@@ -2528,7 +2453,6 @@ to write it, allows us to handle the potential&amp;nbsp;errors.&lt;/p&gt;
 &lt;span class="c1"&gt;-- imagePointOrError :: Either ImagePoint DecodeError&lt;/span&gt;
 &lt;span class="kr"&gt;let&lt;/span&gt; &lt;span class="n"&gt;imagePointOrError&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fmap&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;worldPointOrError&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Here &lt;code&gt;Either WorldPoint&lt;/code&gt; is the functor and &lt;code&gt;fmap&lt;/code&gt; acts as follows: if the
 decoding is successful &lt;code&gt;project&lt;/code&gt; is applied on the returned value.  In case of
@@ -2552,7 +2476,6 @@ concurrent code using the async/await&amp;nbsp;syntax:&lt;/p&gt;
 
 &lt;span class="n"&gt;image_point&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;async_image_point&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;  &lt;span class="c1"&gt;# ③&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;ol&gt;
 &lt;li&gt;
@@ -2582,7 +2505,6 @@ concurrent code using the async/await&amp;nbsp;syntax:&lt;/p&gt;
   &lt;span class="n"&gt;wait&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fmap&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;worldPoint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;           &lt;span class="c1"&gt;-- ③&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;readFromNetwork&lt;/code&gt; simulates the network &lt;span class="caps"&gt;IO&lt;/span&gt;: the body of this function can be
@@ -2603,7 +2525,6 @@ concurrent code using the async/await&amp;nbsp;syntax:&lt;/p&gt;
 &lt;p&gt;By looking at the type signature of &lt;code&gt;fmap&lt;/code&gt; specialized to this&amp;nbsp;example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;fmap&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;WorldPoint&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;ImagePoint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Async&lt;/span&gt; &lt;span class="kt"&gt;WorldPoint&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Async&lt;/span&gt; &lt;span class="kt"&gt;ImagePoint&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;We can see that &lt;code&gt;fmap&lt;/code&gt; constructs a new asynchronous action where the provided
 function is applied to the result of the provided asynchronous action.  It
@@ -2646,7 +2567,6 @@ search engine which looked like&amp;nbsp;this:&lt;/p&gt;
     &lt;span class="n"&gt;printResults&lt;/span&gt; &lt;span class="n"&gt;req&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;I argued that this was a fast, concurrent, replicated and robust version of the
 previous iterations.  In the following sections I am going to improve this
 example, therefore I suggest reading &lt;a href="https://thewagner.net/blog/2018/02/26/concurrency-patterns/"&gt;the related post to understand how we got
@@ -2662,7 +2582,6 @@ here&lt;/a&gt;.&lt;/p&gt;
         &lt;span class="kt"&gt;Left&lt;/span&gt;  &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Server1: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;
         &lt;span class="kt"&gt;Right&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Server2: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;code&gt;fastest&lt;/code&gt; sends the search query to two replicas of the search backend and
 keeps the result from the faster responding server.  The &lt;code&gt;race&lt;/code&gt; function from
@@ -2696,14 +2615,12 @@ locate these two&amp;nbsp;functions:&lt;/p&gt;
 &lt;span class="c1"&gt;-- operations as soon as one has completed.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This looks promising: we can use &lt;code&gt;waitAnyCancel&lt;/code&gt; to achieve the same behavior
 as &lt;code&gt;race&lt;/code&gt; but for a list of asynchronous&amp;nbsp;operations.&lt;/p&gt;
 &lt;p&gt;We cannot just replace &lt;code&gt;race&lt;/code&gt; with &lt;code&gt;waitAnyCancel&lt;/code&gt; because the type signatures
 of the two functions are different.  For reference, this is &lt;code&gt;race&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;race&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Either&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;We need to think a bit more how to fit &lt;code&gt;waitAnyCancel&lt;/code&gt; into &lt;code&gt;fastest&lt;/code&gt;.&lt;/p&gt;
 &lt;h1&gt;Building&amp;nbsp;blocks&lt;/h1&gt;
@@ -2712,7 +2629,6 @@ operation that yields a value of type &lt;code&gt;a&lt;/code&gt;.  Asynchronous 
 spawned using the &lt;code&gt;async&lt;/code&gt; function:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;async&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Async&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The type of the expression &lt;code&gt;fakesearch query kind&lt;/code&gt; is &lt;code&gt;IO String&lt;/code&gt;.  Feeding
 this to &lt;code&gt;async&lt;/code&gt;, &lt;code&gt;async (fakesearch query kind)&lt;/code&gt;, we get an &lt;code&gt;IO (Async String)&lt;/code&gt;
@@ -2730,7 +2646,6 @@ a function which prepends the server&amp;#8217;s identity to the search&amp;nbsp
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;-- prepend the server&amp;#39;s identity to the search result&lt;/span&gt;
 &lt;span class="nf"&gt;servedBy&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Server &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;For example, in case of the second server replica the transformed search action
 would read: &lt;code&gt;servedBy 2 &amp;lt;$&amp;gt; fakeSearch query kind&lt;/code&gt;.  The type of this
@@ -2754,7 +2669,6 @@ and their types were&amp;nbsp;modified:&lt;/p&gt;
 &lt;span class="nf"&gt;\&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;servedBy&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;$&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;fakesearch&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt; &lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Async&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;In the last two lambda-expressions I kept the replica number as a free
 parameter, a form we can reuse in the final&amp;nbsp;step.&lt;/p&gt;
 &lt;h1&gt;Final&amp;nbsp;implementation&lt;/h1&gt;
@@ -2769,7 +2683,6 @@ parameter, a form we can reuse in the final&amp;nbsp;step.&lt;/p&gt;
   &lt;span class="kr"&gt;where&lt;/span&gt; &lt;span class="n"&gt;numReplicas&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
         &lt;span class="n"&gt;servedBy&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Server &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;① Use &lt;code&gt;forM&lt;/code&gt; to transform a list of integers, the replica identifiers, by
   applying the provided function. &lt;code&gt;requests&lt;/code&gt; has a type &lt;code&gt;[Async String]&lt;/code&gt;,
@@ -2923,7 +2836,6 @@ some models in their final&amp;nbsp;form:&lt;/p&gt;
 &lt;span class="nf"&gt;bazel&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;restartingQ&lt;/span&gt; &lt;span class="n"&gt;ctRebuilder&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;It&amp;#8217;s remarkable that the concepts presented in this work lead such succint
 implementations.  The actual executable code can be found &lt;a href="https://github.com/snowleopard/build/blob/03e891238864f30bc5ac1182a1ba37b8b81dcffb/src/Build/System.hs"&gt;in this
 repository&lt;/a&gt;.&lt;/p&gt;
@@ -2949,7 +2861,6 @@ truly amazed: &lt;a href="http://book.realworldhaskell.org/read/using-parsec.htm
 
 &lt;span class="c1"&gt;-- quotedCell = ... -- the definition is omitted&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;I had tried writing a &lt;span class="caps"&gt;CSV&lt;/span&gt; parser by hand before: it was about opening a file,
 looping over all the lines, splitting the lines on the comma, looping over
@@ -3070,7 +2981,6 @@ system&lt;/a&gt; we are going to&amp;nbsp;implement:&lt;/p&gt;
 &lt;span class="go"&gt;                                                 &amp;lt;────┘&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The design comprises three&amp;nbsp;components:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Requester&lt;/em&gt;: Sends a unit of work to the system and waits for the&amp;nbsp;result.&lt;/li&gt;
@@ -3087,7 +2997,6 @@ a request that, when executed, yields a value of type &lt;code&gt;a&lt;/code&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;data&lt;/span&gt; &lt;span class="kt"&gt;Request&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;Request&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;TChan&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The &lt;code&gt;Request&lt;/code&gt; holds an &lt;code&gt;IO&lt;/code&gt; action and a result channel:  the action is the
 executable task at hand, the result channel transmits the result back to the
 requester.  Both the action and the channel are parametrized over the same
@@ -3097,7 +3006,6 @@ type: the result of the task must &amp;#8220;fit&amp;#8221; in the result&amp;nb
 We generate some work with &lt;code&gt;randomTask&lt;/code&gt;, a function with the&amp;nbsp;signature:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;randomTask&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Neither the load balancer nor the worker have to know about the internals of
 this function.  In my implementation &lt;code&gt;randomTask&lt;/code&gt; draws a number from a uniform
@@ -3120,7 +3028,6 @@ complete&amp;nbsp;it.&lt;/p&gt;
   &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;atomically&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;readTChan&lt;/span&gt; &lt;span class="n"&gt;resultChan&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This function is an infinite loop where each iteration sends a request to the
 load balancer after a random delay.  This is a very primitive way to simulate
 some load: not realistic, but good enough for now.  The requester creates the
@@ -3136,7 +3043,6 @@ and distributes them among the available&amp;nbsp;workers.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;data&lt;/span&gt; &lt;span class="kt"&gt;Balancer&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;Balancer&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Pool&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;TChan&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="c1"&gt;-- Pool and Worker will be defined later&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Workers use the completion channel to report to the &lt;code&gt;Balancer&lt;/code&gt; the completion
 of a task.  The &lt;code&gt;Balancer&lt;/code&gt; uses this information to keep track of the load of
@@ -3164,7 +3070,6 @@ each&amp;nbsp;worker.&lt;/p&gt;
 
     &lt;span class="n"&gt;runBalancer&lt;/span&gt; &lt;span class="n"&gt;newPool&lt;/span&gt;                                    &lt;span class="c1"&gt;-- ❺&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;As expected, this is the most complex part of the system.  Let&amp;#8217;s walk through
 it step by&amp;nbsp;step:&lt;/p&gt;
@@ -3200,7 +3105,6 @@ type &lt;code&gt;ControlMessage&lt;/code&gt;:&lt;/p&gt;
                       &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="kt"&gt;WorkerDone&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This type &amp;#8220;tags&amp;#8221; the incoming message so we can differentiate from where it was&amp;nbsp;originated.&lt;/p&gt;
 &lt;p&gt;The communication channels of the &lt;code&gt;Balancer&lt;/code&gt; are now wired up; we are ready to
 implement the load balancing strategy.  Following the &lt;a href="https://talks.golang.org/2012/waza.slide#45"&gt;the original
@@ -3209,7 +3113,6 @@ design&lt;/a&gt;, I shall implement the worker pool using a
 &lt;a href="https://hackage.haskell.org/package/heap-1.0.4/docs/Data-Heap.html"&gt;Data.Heap&lt;/a&gt;&amp;nbsp;module.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Pool&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;DH&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;MinPrioHeap&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This heap stores priority-worker pairs &lt;code&gt;(Int, Worker a)&lt;/code&gt;.  The priority
 represents the number of tasks assigned to the worker.  Because we are using
@@ -3224,7 +3127,6 @@ selects the least loaded worker and schedules the request on&amp;nbsp;it.&lt;/p&
   &lt;span class="n"&gt;schedule&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;                             &lt;span class="c1"&gt;-- ❷&lt;/span&gt;
   &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;DH&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pool&amp;#39;&lt;/span&gt;            &lt;span class="c1"&gt;-- ❸&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The interface of the heap module is unusual, but the code is only three&amp;nbsp;lines:&lt;/p&gt;
 &lt;ol&gt;
@@ -3247,7 +3149,6 @@ selects the least loaded worker and schedules the request on&amp;nbsp;it.&lt;/p&
   &lt;span class="kr"&gt;in&lt;/span&gt;  &lt;span class="kt"&gt;DH&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pool&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;First, we look up the given worker using
 &lt;a href="https://hackage.haskell.org/package/heap-1.0.4/docs/Data-Heap.html#v:partition"&gt;partition&lt;/a&gt;.
 Second, we put it back into the heap with a decreased priority&amp;nbsp;value.&lt;/p&gt;
@@ -3256,7 +3157,6 @@ Second, we put it back into the heap with a decreased priority&amp;nbsp;value.&l
 identifier, an integer in this case, and a channel from which it can receive&amp;nbsp;requests:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;data&lt;/span&gt; &lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;TChan&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Request&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="kr"&gt;deriving&lt;/span&gt; &lt;span class="kt"&gt;Eq&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This is the worker&amp;#8217;s main&amp;nbsp;function:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;work&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;TChan&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
@@ -3268,7 +3168,6 @@ identifier, an integer in this case, and a channel from which it can receive&amp
     &lt;span class="n"&gt;writeTChan&lt;/span&gt; &lt;span class="n"&gt;doneChannel&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;workerId&lt;/span&gt; &lt;span class="n"&gt;requestChan&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;        &lt;span class="c1"&gt;-- ❹&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;It is an infinite loop which (1) reads from the request channel, (2) performs
 the task, (3) sends the result to the requester, and (4) reports the completion
 to the balancer.  We have already seen the implementations of other ends of
@@ -3278,7 +3177,6 @@ the&amp;nbsp;worker:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;schedule&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Request&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
 &lt;span class="nf"&gt;schedule&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;atomically&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;writeTChan&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The function &lt;code&gt;schedule&lt;/code&gt; deconstructs the &lt;code&gt;Worker&lt;/code&gt; and sends the provided
 request to its internal channel.  This function allows &lt;code&gt;Worker&lt;/code&gt; to remain
@@ -3295,13 +3193,11 @@ balancer, and the workers.  We only have to wire everything&amp;nbsp;up:&lt;/p&g
   &lt;span class="n"&gt;race_&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="n"&gt;chan&lt;/span&gt; &lt;span class="n"&gt;balancer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requester&lt;/span&gt; &lt;span class="n"&gt;chan&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;If you run the &lt;a href="https://github.com/wagdav/load-balancer"&gt;complete code&lt;/a&gt; you will get an output&amp;nbsp;like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;Balancer: fromList [(0,Worker 2),(1,Worker 3),(0,Worker 1)]&lt;/span&gt;
 &lt;span class="go"&gt;Balancer: fromList [(0,Worker 1),(1,Worker 2),(1,Worker 3)]&lt;/span&gt;
 &lt;span class="go"&gt;Balancer: fromList [(1,Worker 3),(1,Worker 1),(1,Worker 2)]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;You can see that the first three requests were scheduled on different workers.
 The program continues indefinitely and you should see roughly the same amount
@@ -3558,13 +3454,11 @@ coins, we don&amp;#8217;t give the exact denominators to be used in the&amp;nbsp
 &lt;span class="nf"&gt;coins&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;We will write a function with the following&amp;nbsp;signature:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;change&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt;     &lt;span class="c1"&gt;-- amount&lt;/span&gt;
        &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt;     &lt;span class="c1"&gt;-- index of the last available coin&lt;/span&gt;
        &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Change&lt;/span&gt;  &lt;span class="c1"&gt;-- the number of coins&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;code&gt;change&lt;/code&gt; takes to arguments: the amount to change, the index of the last
 available coin and it returns the number of coins in the&amp;nbsp;change.&lt;/p&gt;
@@ -3576,7 +3470,6 @@ to the theoretical formulation of the&amp;nbsp;problem.&lt;/p&gt;
 &lt;code&gt;Change&lt;/code&gt; as&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Change&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This is more expressive than using infinity as a sentinel value when the change
 is not&amp;nbsp;possible.&lt;/p&gt;
@@ -3596,7 +3489,6 @@ is not&amp;nbsp;possible.&lt;/p&gt;
     &lt;span class="n"&gt;right&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;sm&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;coins&lt;/span&gt; &lt;span class="o"&gt;!!&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This implementation is &lt;em&gt;almost&lt;/em&gt; maps one-to-one to the recursive formula above.
 The first three guard expression handle the three base cases.  In the last
@@ -3619,7 +3511,6 @@ the addition into the context of &lt;code&gt;Maybe&lt;/code&gt;.&lt;/p&gt;
 &lt;span class="nf"&gt;minOf&lt;/span&gt; &lt;span class="n"&gt;c1&lt;/span&gt; &lt;span class="n"&gt;c2&lt;/span&gt;             &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;c2&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The function takes two &lt;code&gt;Change&lt;/code&gt; values:  if both &lt;code&gt;Maybe&lt;/code&gt; contain &lt;code&gt;Int&lt;/code&gt; values
 we choose the smaller one.  Otherwise we try to keep the one that has a value
 in it using &lt;code&gt;&amp;lt;|&amp;gt;&lt;/code&gt;.  This behaves similarly to logical &lt;span class="caps"&gt;OR&lt;/span&gt;.  We can easily test
@@ -3634,7 +3525,6 @@ Nothing
 Prelude Control.Applicative&amp;gt; Just &lt;span class="m"&gt;1&lt;/span&gt; &amp;lt;&lt;span class="p"&gt;|&lt;/span&gt;&amp;gt; Just &lt;span class="m"&gt;2&lt;/span&gt;   -- prefers the first
 Just &lt;span class="m"&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This implementation of &lt;code&gt;minOf&lt;/code&gt; gives us the right behavior when we select the
 smaller between the results of the &lt;code&gt;left&lt;/code&gt; and &lt;code&gt;right&lt;/code&gt; subproblems.&lt;/p&gt;
@@ -3694,7 +3584,6 @@ value.  We call this computation &lt;code&gt;Dyn&lt;/code&gt;:&lt;/p&gt;
 &lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Dyn&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;State&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;M&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kt"&gt;Change&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Using this, we can write &lt;code&gt;changeD&lt;/code&gt; which, returns a &lt;code&gt;Dyn&lt;/code&gt; computation resulting
 in a &lt;code&gt;Change&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;changeD&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Dyn&lt;/span&gt; &lt;span class="kt"&gt;Change&lt;/span&gt;
@@ -3712,7 +3601,6 @@ in a &lt;code&gt;Change&lt;/code&gt;:&lt;/p&gt;
       &lt;span class="n"&gt;sm&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;coins&lt;/span&gt; &lt;span class="o"&gt;!!&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The code looks very much like the naive solution but, since we&amp;#8217;re operating in
 the &lt;code&gt;Dyn&lt;/code&gt; context, we are using the &lt;code&gt;do&lt;/code&gt; notation.  The &lt;code&gt;memorize&lt;/code&gt; computation
 implements the storing and recalling the subproblems&amp;#8217;&amp;nbsp;solution:&lt;/p&gt;
@@ -3728,7 +3616,6 @@ implements the storing and recalling the subproblems&amp;#8217;&amp;nbsp;solutio
     &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This function is a literal implementation of the dynamic programming method.
 We try to look up the solution in the state: if the subproblem has already been
 solved we return the solution, otherwise we solve the subproblem and store its
@@ -3737,7 +3624,6 @@ solution in the&amp;nbsp;state.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;change&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Int&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Change&lt;/span&gt;
 &lt;span class="nf"&gt;change&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evalState&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;changeD&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kt"&gt;M&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;We execute the &lt;code&gt;Dyn&lt;/code&gt; computation using &lt;code&gt;evalState&lt;/code&gt; by providing an initial
 empty state.  This function provides exactly the same interface as the naive
@@ -3985,7 +3871,6 @@ performing search&amp;nbsp;engine.&lt;/p&gt;
     &lt;span class="kr"&gt;deriving&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Show&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;We represent the search query with a simple string and the kinds of search we
 can perform with product-type.  The role of the imported functions will be
 clear as we go&amp;nbsp;along.&lt;/p&gt;
@@ -4003,7 +3888,6 @@ run, yields the search result as a&amp;nbsp;string:&lt;/p&gt;
         &lt;span class="n"&gt;microseconds&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Our search back-end won&amp;#8217;t get any more sophisticated than&amp;nbsp;this:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;we make the current thread sleep for a random number amount of milliseconds,&amp;nbsp;then&lt;/li&gt;
@@ -4018,14 +3902,12 @@ serve this request.  We want to print these results so we write a small helper&a
     &lt;span class="kt"&gt;Nothing&lt;/span&gt;  &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;putStrLn&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;timed out&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This function takes an optional list of strings and prints them on the console.
 If the argument is &lt;code&gt;Nothing&lt;/code&gt; it means that the search request timed out (we
 will see this later).  At this stage this function looks more generic than it
 needs to be.  Probably you would start with a simpler signature, something&amp;nbsp;like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;printResults&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;and make it more complex &lt;a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it"&gt;when needed&lt;/a&gt;.  This would make more sense and I
 also started with this initially.  However, for the sake of this post, we will
@@ -4041,14 +3923,12 @@ searches&amp;nbsp;sequentially:&lt;/p&gt;
     &lt;span class="n"&gt;printResults&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;req&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;We use &lt;code&gt;mapM&lt;/code&gt; to sequentially perform the three kinds of searches.  The result
 of a typical search using &lt;code&gt;haskell&lt;/code&gt; as a query would look&amp;nbsp;like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;[&amp;quot;Web results for &amp;#39;haskell&amp;#39; in 27 ms&amp;quot;,&lt;/span&gt;
 &lt;span class="go"&gt; &amp;quot;Image results for &amp;#39;haskell&amp;#39; in 61 ms&amp;quot;,&lt;/span&gt;
 &lt;span class="go"&gt; &amp;quot;Video results for &amp;#39;haskell&amp;#39; in 17 ms&amp;quot;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Since the searches are performed sequentially it takes 27 + 61 + 17 = 105 ms to
 serve the results to the user.  This post won&amp;#8217;t be about concurrency if we were
@@ -4066,7 +3946,6 @@ search&amp;nbsp;engine:&lt;/p&gt;
     &lt;span class="n"&gt;req&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;mapConcurrently&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fakeSearch&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;Web&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Video&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="n"&gt;printResults&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;req&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;mapConcurrently&lt;/code&gt; combinator from the &lt;a href="http://hackage.haskell.org/package/async-2.2.1/docs/Control-Concurrent-Async.html#v:mapConcurrently"&gt;async&lt;/a&gt; library will launch three
 light-weight threads and perform the three search actions concurrently.  The
@@ -4096,7 +3975,6 @@ message and we send our sincerest apologies to our&amp;nbsp;user.&lt;/p&gt;
     &lt;span class="n"&gt;printResults&lt;/span&gt; &lt;span class="n"&gt;req&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Again, we only have to do a small modification to get the desired behavior.
 The search actions are wrapped in a &lt;code&gt;timeout&lt;/code&gt; call.  The signature of this
 function&amp;nbsp;is:&lt;/p&gt;
@@ -4105,19 +3983,16 @@ function&amp;nbsp;is:&lt;/p&gt;
         &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;-- (Just a) if less than the delay elapsed else Nothing&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;We can run this version a couple of times and we will see two kinds of outputs.
 If all requests take less than 80ms &lt;code&gt;printResults&lt;/code&gt; will behave as&amp;nbsp;before:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;[&amp;quot;Web results for &amp;#39;haskell&amp;#39; in 70 ms&amp;quot;,&lt;/span&gt;
-&lt;span class="err"&gt; &amp;quot;Web results for &amp;#39;haskell&amp;#39; in 67 ms&amp;quot;,&lt;/span&gt;
-&lt;span class="err"&gt; &amp;quot;Video results for &amp;#39;haskell&amp;#39; in 63 ms&amp;quot;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;Web results for &amp;#39;haskell&amp;#39; in 70 ms&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;,
+ &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;Web results for &amp;#39;haskell&amp;#39; in 67 ms&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;,
+ &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;Video results for &amp;#39;haskell&amp;#39; in 63 ms&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;otherwise, and this is why &lt;code&gt;printResults&lt;/code&gt; takes a &lt;code&gt;Maybe [String]&lt;/code&gt; as&amp;nbsp;input,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;timed out&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;timed out
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;is&amp;nbsp;printed.&lt;/p&gt;
 &lt;h1&gt;Search&amp;nbsp;3.0&lt;/h1&gt;
@@ -4140,13 +4015,11 @@ problem and responds slowly we can still get back a response from the&amp;nbsp;o
         &lt;span class="kt"&gt;Right&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Server2: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This function have the same interface as &lt;code&gt;fakesearch&lt;/code&gt; but internally it sends
 the same query two times to two different servers and keeps the result from the
 fastest.  The &lt;code&gt;race&lt;/code&gt; combinator from the &lt;a href="http://hackage.haskell.org/package/async-2.2.1/docs/Control-Concurrent-Async.html#v:race"&gt;async&lt;/a&gt;&amp;nbsp;library:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;race&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Either&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;helps us to achieve this.  It launches the two &lt;span class="caps"&gt;IO&lt;/span&gt; actions in parallel and keeps
 the result from the fastest.  The other action will be terminated.  There is no
@@ -4163,19 +4036,17 @@ served&amp;nbsp;from.&lt;/p&gt;
     &lt;span class="n"&gt;printResults&lt;/span&gt; &lt;span class="n"&gt;req&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Let&amp;#8217;s see some typical&amp;nbsp;results:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$&lt;/span&gt; search30
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;search30
 &lt;span class="go"&gt;[&amp;quot;Server1: Web results for &amp;#39;haskell&amp;#39; in 29 ms&amp;quot;,&lt;/span&gt;
 &lt;span class="go"&gt; &amp;quot;Server1: Image results for &amp;#39;haskell&amp;#39; in 36 ms&amp;quot;,&lt;/span&gt;
 &lt;span class="go"&gt; &amp;quot;Server2: Video results for &amp;#39;haskell&amp;#39; in 49 ms&amp;quot;]&lt;/span&gt;
 
-&lt;span class="gp"&gt;$&lt;/span&gt; search30
+&lt;span class="gp"&gt;$ &lt;/span&gt;search30
 &lt;span class="go"&gt;[&amp;quot;Server2: Web results for &amp;#39;haskell&amp;#39; in 19 ms&amp;quot;,&lt;/span&gt;
 &lt;span class="go"&gt; &amp;quot;Server2: Image results for &amp;#39;haskell&amp;#39; in 50 ms&amp;quot;,&lt;/span&gt;
 &lt;span class="go"&gt; &amp;quot;Server1: Video results for &amp;#39;haskell&amp;#39; in 39 ms&amp;quot;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;We can see that in the first run the web and image results were served by the
 first replica, while the video result comes from the second.  In the second

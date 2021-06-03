@@ -77,7 +77,6 @@ Nix package&nbsp;manager.</p>
 <div class="highlight"><pre><span></span><code>nix build
 </code></pre></div>
 
-
 <p>All dependencies are pinned to a specific version of Nix Packages therefore
 this command always uses the same version of <em>every</em> tool and library no matter
 where or when it is&nbsp;executed.</p>
@@ -86,7 +85,6 @@ where or when it is&nbsp;executed.</p>
 deployment&nbsp;repository:</p>
 <div class="highlight"><pre><span></span><code>./scripts/publish.sh
 </code></pre></div>
-
 
 <p>Because the script runs within a Nix shell, again, Nix is the only dependency
 and I don&#8217;t have to install any additional tools or libraries to run&nbsp;it.</p>
@@ -104,7 +102,6 @@ workstation.  However, to deploy my changes reliably I choose <a href="https://t
   <span class="nt">on</span><span class="p">:</span>
     <span class="nt">branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
 </code></pre></div>
-
 
 <p>Behind the scenes this configuration builds the artifacts described in
 <a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/default.nix">default.nix</a> and executes the <a href="https://github.com/wagdav/thewagner.net/blob/3e423bb/scripts/publish.sh">publish.sh</a> when

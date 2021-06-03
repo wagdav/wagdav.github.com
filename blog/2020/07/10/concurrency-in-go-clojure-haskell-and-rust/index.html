@@ -70,7 +70,6 @@ back-end servers to reduce tail&nbsp;latency.</p>
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>The implementation shows Go&#8217;s concurrency primitives: goroutines, channels, and
 the select statement.  The Go runtime manages the goroutines which are
 lightweight threads of execution.  Goroutines communicate via channels.  The
@@ -95,7 +94,6 @@ from the slides for&nbsp;reference:</p>
                    <span class="p">(</span><span class="nb">conj </span><span class="nv">ret</span> <span class="p">(</span><span class="nf">alt</span>, <span class="p">[</span><span class="nv">c</span> <span class="nv">t</span><span class="p">]</span> <span class="p">([</span><span class="nv">v</span><span class="p">]</span> <span class="nv">v</span><span class="p">)))))))))</span>
 </code></pre></div>
 
-
 <p>Clojure&#8217;s async library uses the same primitives as Go: the syntax is <span class="caps">LISP</span>, but
 the structure of the program is identical to that of the Go version.  Watch
 <a href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rich Hickey&#8217;s presentation</a> if you&#8217;re interested how this
@@ -110,7 +108,6 @@ works on the <span class="caps">JVM</span> and in a web browser using&nbsp;Cloju
         <span class="n">mapConcurrently</span> <span class="p">(</span><span class="n">fastest</span> <span class="n">query</span><span class="p">)</span> <span class="p">[</span><span class="kt">Web</span><span class="p">,</span> <span class="kt">Image</span><span class="p">,</span> <span class="kt">Video</span><span class="p">]</span>
     <span class="n">printResults</span> <span class="n">req</span>
 </code></pre></div>
-
 
 <p>This is my favorite version of this exercise because it&#8217;s succint and
 expressive.  We don&#8217;t see the primitives we saw in the Go and Clojure version,
@@ -134,7 +131,6 @@ language I&#8217;ve been learning for the last couple of&nbsp;weeks:</p>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">SearchResult</span>::<span class="n">timeout</span><span class="p">())</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>This code looks similar to the Haskell version because we don&#8217;t see channels
 and explicit thread management here either.  The Rust language defines the

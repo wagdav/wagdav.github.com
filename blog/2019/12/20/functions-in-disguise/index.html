@@ -66,7 +66,6 @@ me show you what I mean with an&nbsp;example.</p>
 <span class="na">url</span><span class="o">=</span><span class="s">example.com</span>
 </code></pre></div>
 
-
 <p>Let&#8217;s say that this is a configuration file of a simple service which is
 deployed into a specific environment.  First, we deploy it to staging and, when
 all the tests pass,  we promote the application to production.  Naturally, the
@@ -78,7 +77,6 @@ imaginary type signature&nbsp;is:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">configuration</span> <span class="ow">::</span> <span class="kt">Environment</span> <span class="ow">-&gt;</span> <span class="kt">Url</span>
 </code></pre></div>
 
-
 <p>This reads: the configuration is a function from an environment to a <span class="caps">URL</span>.
 If we saw such a function signature in an application, we could implement it
 like&nbsp;this:</p>
@@ -87,7 +85,6 @@ like&nbsp;this:</p>
      <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;example.com&#39;</span> <span class="k">if</span> <span class="n">environment</span> <span class="o">==</span> <span class="s1">&#39;production&#39;</span> <span class="k">else</span> <span class="s1">&#39;staging.example.com&#39;</span>
    <span class="p">}</span>
 </code></pre></div>
-
 
 <p>For clarity I used Python&#8217;s familiar syntax, but this is not&nbsp;important.</p>
 <p>Conceptually we can think that after the configuration file is parsed, this
@@ -108,7 +105,6 @@ and our application&#8217;s&nbsp;initialization.</p>
 <span class="na">db_backend</span><span class="o">=</span><span class="s">rds</span>
 <span class="na">db_address</span><span class="o">=</span><span class="s">%(db_backend).amazon.com</span>
 </code></pre></div>
-
 
 <p>Here I made the database backend of our service configurable.  It&#8217;s a contrived
 example, but not completely unrealistic: in staging we use our own Postgres
@@ -148,7 +144,6 @@ as a&nbsp;function:</p>
     <span class="n">db_address</span><span class="p">:</span> <span class="n">db_backend</span> <span class="o">+</span> <span class="n">db_suffix</span>
   <span class="p">}</span>
 </code></pre></div>
-
 
 <p>Is this better than the <span class="caps">INI</span> syntax?  Well, not necessarily, but it triggers
 different kinds of&nbsp;thoughts:</p>

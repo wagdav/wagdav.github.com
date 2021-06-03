@@ -73,9 +73,8 @@ shows its basic&nbsp;usage:</p>
 <span class="w">    </span><span class="n">builder</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">word</span><span class="p">);</span><span class="w">                         </span><span class="c1">// ②</span>
 <span class="p">}</span><span class="w"></span>
 <span class="kd">let</span><span class="w"> </span><span class="n">chain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="n">build</span><span class="p">();</span><span class="w">                    </span><span class="c1">// ③</span>
-<span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">chain</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="mi">100</span><span class="p">).</span><span class="n">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// ④</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">chain</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="mi">100</span><span class="p">).</span><span class="n">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// ④</span>
 </code></pre></div>
-
 
 <ol>
 <li>Create a <a href="https://rust-unofficial.github.io/patterns/patterns/creational/builder.html">ChainBuilder</a>.  The chain will use two-word prefixes
@@ -135,7 +134,6 @@ realize that the rule seems to have been&nbsp;solved.</p>
 to plain&nbsp;text:</p>
 <div class="highlight"><pre><span></span><code>pandoc  *.markdown --from markdown --to plain
 </code></pre></div>
-
 
 <p>This yields about 20 thousand words of text, some of which appear in equations,
 enumerations and code blocks.  I wrote a function to ignore almost everything

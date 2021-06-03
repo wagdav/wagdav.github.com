@@ -69,7 +69,6 @@ sequential programming language artifacts from the&nbsp;sixties.</p>
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div>
 
-
 <p>This code is written today&#8217;s most common programming style: sequential,
 imperative, mutable and allowing uncontrolled side effects.  Every line of this
 function states what happens during&nbsp;execution:</p>
@@ -92,7 +91,6 @@ of <code>factorial</code>:</p>
 <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
-
 
 <p>This implementation reads almost as a pure specification without any view on
 the execution.  This form is more unusual but <em>simpler</em> than before because all

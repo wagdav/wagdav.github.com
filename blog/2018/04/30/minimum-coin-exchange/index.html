@@ -91,13 +91,11 @@ coins, we don&#8217;t give the exact denominators to be used in the&nbsp;change.
 <span class="nf">coins</span> <span class="ow">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
 
-
 <p>We will write a function with the following&nbsp;signature:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">change</span> <span class="ow">::</span> <span class="kt">Int</span>     <span class="c1">-- amount</span>
        <span class="ow">-&gt;</span> <span class="kt">Int</span>     <span class="c1">-- index of the last available coin</span>
        <span class="ow">-&gt;</span> <span class="kt">Change</span>  <span class="c1">-- the number of coins</span>
 </code></pre></div>
-
 
 <p><code>change</code> takes to arguments: the amount to change, the index of the last
 available coin and it returns the number of coins in the&nbsp;change.</p>
@@ -109,7 +107,6 @@ to the theoretical formulation of the&nbsp;problem.</p>
 <code>Change</code> as</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Change</span> <span class="ow">=</span> <span class="kt">Maybe</span> <span class="kt">Int</span>
 </code></pre></div>
-
 
 <p>This is more expressive than using infinity as a sentinel value when the change
 is not&nbsp;possible.</p>
@@ -129,7 +126,6 @@ is not&nbsp;possible.</p>
     <span class="n">right</span> <span class="ow">=</span> <span class="n">change</span> <span class="n">n</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">sm</span> <span class="ow">=</span> <span class="n">coins</span> <span class="o">!!</span> <span class="n">m</span>
 </code></pre></div>
-
 
 <p>This implementation is <em>almost</em> maps one-to-one to the recursive formula above.
 The first three guard expression handle the three base cases.  In the last
@@ -152,7 +148,6 @@ the addition into the context of <code>Maybe</code>.</p>
 <span class="nf">minOf</span> <span class="n">c1</span> <span class="n">c2</span>             <span class="ow">=</span> <span class="n">c1</span> <span class="o">&lt;|&gt;</span> <span class="n">c2</span>
 </code></pre></div>
 
-
 <p>The function takes two <code>Change</code> values:  if both <code>Maybe</code> contain <code>Int</code> values
 we choose the smaller one.  Otherwise we try to keep the one that has a value
 in it using <code>&lt;|&gt;</code>.  This behaves similarly to logical <span class="caps">OR</span>.  We can easily test
@@ -167,7 +162,6 @@ Nothing
 Prelude Control.Applicative&gt; Just <span class="m">1</span> &lt;<span class="p">|</span>&gt; Just <span class="m">2</span>   -- prefers the first
 Just <span class="m">1</span>
 </code></pre></div>
-
 
 <p>This implementation of <code>minOf</code> gives us the right behavior when we select the
 smaller between the results of the <code>left</code> and <code>right</code> subproblems.</p>
@@ -227,7 +221,6 @@ value.  We call this computation <code>Dyn</code>:</p>
 <span class="kr">type</span> <span class="kt">Dyn</span> <span class="ow">=</span> <span class="kt">State</span> <span class="p">(</span><span class="kt">M</span><span class="o">.</span><span class="kt">Map</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="kt">Change</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>Using this, we can write <code>changeD</code> which, returns a <code>Dyn</code> computation resulting
 in a <code>Change</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">changeD</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Dyn</span> <span class="kt">Change</span>
@@ -245,7 +238,6 @@ in a <code>Change</code>:</p>
       <span class="n">sm</span> <span class="ow">=</span> <span class="n">coins</span> <span class="o">!!</span> <span class="n">m</span>
 </code></pre></div>
 
-
 <p>The code looks very much like the naive solution but, since we&#8217;re operating in
 the <code>Dyn</code> context, we are using the <code>do</code> notation.  The <code>memorize</code> computation
 implements the storing and recalling the subproblems&#8217;&nbsp;solution:</p>
@@ -261,7 +253,6 @@ implements the storing and recalling the subproblems&#8217;&nbsp;solution:</p>
     <span class="n">return</span> <span class="n">val</span>
 </code></pre></div>
 
-
 <p>This function is a literal implementation of the dynamic programming method.
 We try to look up the solution in the state: if the subproblem has already been
 solved we return the solution, otherwise we solve the subproblem and store its
@@ -270,7 +261,6 @@ solution in the&nbsp;state.</p>
 <div class="highlight"><pre><span></span><code><span class="nf">change</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Change</span>
 <span class="nf">change</span> <span class="n">m</span> <span class="n">n</span> <span class="ow">=</span> <span class="n">evalState</span> <span class="p">(</span><span class="n">changeD</span> <span class="n">m</span> <span class="n">n</span><span class="p">)</span> <span class="kt">M</span><span class="o">.</span><span class="n">empty</span>
 </code></pre></div>
-
 
 <p>We execute the <code>Dyn</code> computation using <code>evalState</code> by providing an initial
 empty state.  This function provides exactly the same interface as the naive

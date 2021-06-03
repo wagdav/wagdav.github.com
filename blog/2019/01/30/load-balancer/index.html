@@ -70,7 +70,6 @@ system</a> we are going to&nbsp;implement:</p>
 <span class="go">                                                 &lt;────┘</span>
 </code></pre></div>
 
-
 <p>The design comprises three&nbsp;components:</p>
 <ul>
 <li><em>Requester</em>: Sends a unit of work to the system and waits for the&nbsp;result.</li>
@@ -87,7 +86,6 @@ a request that, when executed, yields a value of type <code>a</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kr">data</span> <span class="kt">Request</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Request</span> <span class="p">(</span><span class="kt">IO</span> <span class="n">a</span><span class="p">)</span> <span class="p">(</span><span class="kt">TChan</span> <span class="n">a</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>The <code>Request</code> holds an <code>IO</code> action and a result channel:  the action is the
 executable task at hand, the result channel transmits the result back to the
 requester.  Both the action and the channel are parametrized over the same
@@ -97,7 +95,6 @@ type: the result of the task must &#8220;fit&#8221; in the result&nbsp;channel.<
 We generate some work with <code>randomTask</code>, a function with the&nbsp;signature:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">randomTask</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="kt">Int</span>
 </code></pre></div>
-
 
 <p>Neither the load balancer nor the worker have to know about the internals of
 this function.  In my implementation <code>randomTask</code> draws a number from a uniform
@@ -120,7 +117,6 @@ complete&nbsp;it.</p>
   <span class="n">async</span> <span class="o">$</span> <span class="n">atomically</span> <span class="o">$</span> <span class="n">readTChan</span> <span class="n">resultChan</span>
 </code></pre></div>
 
-
 <p>This function is an infinite loop where each iteration sends a request to the
 load balancer after a random delay.  This is a very primitive way to simulate
 some load: not realistic, but good enough for now.  The requester creates the
@@ -136,7 +132,6 @@ and distributes them among the available&nbsp;workers.</p>
 <div class="highlight"><pre><span></span><code><span class="kr">data</span> <span class="kt">Balancer</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Balancer</span> <span class="p">(</span><span class="kt">Pool</span> <span class="n">a</span><span class="p">)</span> <span class="p">(</span><span class="kt">TChan</span> <span class="p">(</span><span class="kt">Worker</span> <span class="n">a</span><span class="p">))</span>
 <span class="c1">-- Pool and Worker will be defined later</span>
 </code></pre></div>
-
 
 <p>Workers use the completion channel to report to the <code>Balancer</code> the completion
 of a task.  The <code>Balancer</code> uses this information to keep track of the load of
@@ -164,7 +159,6 @@ each&nbsp;worker.</p>
 
     <span class="n">runBalancer</span> <span class="n">newPool</span>                                    <span class="c1">-- ❺</span>
 </code></pre></div>
-
 
 <p>As expected, this is the most complex part of the system.  Let&#8217;s walk through
 it step by&nbsp;step:</p>
@@ -200,7 +194,6 @@ type <code>ControlMessage</code>:</p>
                       <span class="o">|</span> <span class="kt">WorkerDone</span> <span class="p">(</span><span class="kt">Worker</span> <span class="n">a</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>This type &#8220;tags&#8221; the incoming message so we can differentiate from where it was&nbsp;originated.</p>
 <p>The communication channels of the <code>Balancer</code> are now wired up; we are ready to
 implement the load balancing strategy.  Following the <a href="https://talks.golang.org/2012/waza.slide#45">the original
@@ -209,7 +202,6 @@ design</a>, I shall implement the worker pool using a
 <a href="https://hackage.haskell.org/package/heap-1.0.4/docs/Data-Heap.html">Data.Heap</a>&nbsp;module.</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Pool</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">DH</span><span class="o">.</span><span class="kt">MinPrioHeap</span> <span class="kt">Int</span> <span class="p">(</span><span class="kt">Worker</span> <span class="n">a</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>This heap stores priority-worker pairs <code>(Int, Worker a)</code>.  The priority
 represents the number of tasks assigned to the worker.  Because we are using
@@ -224,7 +216,6 @@ selects the least loaded worker and schedules the request on&nbsp;it.</p>
   <span class="n">schedule</span> <span class="n">w</span> <span class="n">request</span>                             <span class="c1">-- ❷</span>
   <span class="n">return</span> <span class="o">$</span> <span class="kt">DH</span><span class="o">.</span><span class="n">insert</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="n">pool&#39;</span>            <span class="c1">-- ❸</span>
 </code></pre></div>
-
 
 <p>The interface of the heap module is unusual, but the code is only three&nbsp;lines:</p>
 <ol>
@@ -247,7 +238,6 @@ selects the least loaded worker and schedules the request on&nbsp;it.</p>
   <span class="kr">in</span>  <span class="kt">DH</span><span class="o">.</span><span class="n">insert</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="n">pool&#39;</span>
 </code></pre></div>
 
-
 <p>First, we look up the given worker using
 <a href="https://hackage.haskell.org/package/heap-1.0.4/docs/Data-Heap.html#v:partition">partition</a>.
 Second, we put it back into the heap with a decreased priority&nbsp;value.</p>
@@ -256,7 +246,6 @@ Second, we put it back into the heap with a decreased priority&nbsp;value.</p>
 identifier, an integer in this case, and a channel from which it can receive&nbsp;requests:</p>
 <div class="highlight"><pre><span></span><code><span class="kr">data</span> <span class="kt">Worker</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Worker</span> <span class="kt">Int</span> <span class="p">(</span><span class="kt">TChan</span> <span class="p">(</span><span class="kt">Request</span> <span class="n">a</span><span class="p">))</span> <span class="kr">deriving</span> <span class="kt">Eq</span>
 </code></pre></div>
-
 
 <p>This is the worker&#8217;s main&nbsp;function:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">work</span> <span class="ow">::</span> <span class="kt">Worker</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">TChan</span> <span class="p">(</span><span class="kt">Worker</span> <span class="n">a</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
@@ -268,7 +257,6 @@ identifier, an integer in this case, and a channel from which it can receive&nbs
     <span class="n">writeTChan</span> <span class="n">doneChannel</span> <span class="p">(</span><span class="kt">Worker</span> <span class="n">workerId</span> <span class="n">requestChan</span><span class="p">)</span>        <span class="c1">-- ❹</span>
 </code></pre></div>
 
-
 <p>It is an infinite loop which (1) reads from the request channel, (2) performs
 the task, (3) sends the result to the requester, and (4) reports the completion
 to the balancer.  We have already seen the implementations of other ends of
@@ -278,7 +266,6 @@ the&nbsp;worker:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">schedule</span> <span class="ow">::</span> <span class="kt">Worker</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Request</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
 <span class="nf">schedule</span> <span class="p">(</span><span class="kt">Worker</span> <span class="n">i</span> <span class="n">c</span><span class="p">)</span> <span class="n">request</span> <span class="ow">=</span> <span class="n">atomically</span> <span class="o">$</span> <span class="n">writeTChan</span> <span class="n">c</span> <span class="n">request</span>
 </code></pre></div>
-
 
 <p>The function <code>schedule</code> deconstructs the <code>Worker</code> and sends the provided
 request to its internal channel.  This function allows <code>Worker</code> to remain
@@ -295,13 +282,11 @@ balancer, and the workers.  We only have to wire everything&nbsp;up:</p>
   <span class="n">race_</span> <span class="p">(</span><span class="n">balance</span> <span class="n">chan</span> <span class="n">balancer</span><span class="p">)</span> <span class="p">(</span><span class="n">requester</span> <span class="n">chan</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>If you run the <a href="https://github.com/wagdav/load-balancer">complete code</a> you will get an output&nbsp;like:</p>
 <div class="highlight"><pre><span></span><code><span class="go">Balancer: fromList [(0,Worker 2),(1,Worker 3),(0,Worker 1)]</span>
 <span class="go">Balancer: fromList [(0,Worker 1),(1,Worker 2),(1,Worker 3)]</span>
 <span class="go">Balancer: fromList [(1,Worker 3),(1,Worker 1),(1,Worker 2)]</span>
 </code></pre></div>
-
 
 <p>You can see that the first three requests were scheduled on different workers.
 The program continues indefinitely and you should see roughly the same amount

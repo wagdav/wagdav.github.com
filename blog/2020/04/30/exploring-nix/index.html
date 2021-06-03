@@ -59,13 +59,11 @@ and the symbols can be used after the keyword <code>in</code>.  For example, the
   x <span class="o">+</span> y <span class="o">+</span> x
 </code></pre></div>
 
-
 <p>evaluates to <code>"aba"</code>.</p>
 <p>In Nix, functions are first-class values.  A function which adds one to a
 value is defined&nbsp;succinctly:</p>
 <div class="highlight"><pre><span></span><code>n<span class="p">:</span> n <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
-
 
 <p>Typically, functions take sets as arguments and return sets as results.  This
 expression defines and calls the <code>endpoints</code> function:</p>
@@ -78,11 +76,9 @@ expression defines and calls the <code>endpoints</code> function:</p>
   endpoints <span class="p">{</span> <span class="ss">engine =</span> <span class="s2">&quot;google&quot;</span><span class="p">;</span> <span class="ss">domain =</span> <span class="s2">&quot;com&quot;</span><span class="p">;</span> <span class="p">}</span>
 </code></pre></div>
 
-
 <p>which evaluates&nbsp;to:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="ss">http =</span> <span class="s2">&quot;http://google.com&quot;</span><span class="p">;</span> <span class="ss">https =</span> <span class="s2">&quot;https://google.com&quot;</span><span class="p">;</span> <span class="p">}</span>
 </code></pre></div>
-
 
 <p>This last example also shows how symbols in the current scope are interpolated
 in strings using <code>${}</code>.</p>
@@ -95,7 +91,6 @@ statement more concrete with an&nbsp;example.</p>
 <p>We will use Nix to put a string into a file using a build action equivalent&nbsp;to:</p>
 <div class="highlight"><pre><span></span><code><span class="go">echo hello from Nix &gt; output.txt</span>
 </code></pre></div>
-
 
 <p>This build runs the <code>echo</code> shell command to generate a file.  The build
 requires no input source files, but a shell to be present.  We could use <code>bash</code>
@@ -117,7 +112,6 @@ input and returns the build recipe, a&nbsp;derivation:</p>
   <span class="ss">system =</span> <span class="nb">builtins</span><span class="o">.</span>currentSystem<span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p><code>derivation</code> is keyword of the Nix language.  It&#8217;s represented as a set with
 specific attributes: a name, a program and its arguments to produce some
@@ -156,7 +150,6 @@ derivation in the following&nbsp;structure:</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p>In this representation we can see how Nix stores the build artifacts under
 <code>/nix/store</code>.  The filenames in the store are cryptographic hashes of the
@@ -206,25 +199,22 @@ nodes with special&nbsp;hardware.</p>
 <h1>Build the&nbsp;example</h1>
 <p>To build the example in the previous section, save the expression in a file
 named <code>hello.nix</code> and&nbsp;run:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> nix-build hello.nix --arg bash <span class="s1">&#39;(import &lt;nixpkgs&gt; {}).bash&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>nix-build hello.nix --arg bash <span class="s1">&#39;(import &lt;nixpkgs&gt; {}).bash&#39;</span>
 <span class="go">/nix/store/qcnf97fclrnqppq3h5ld9smqdb8l2ybk-hello</span>
 </code></pre></div>
-
 
 <p>The <code>--arg</code> switch tells Nix to use the <code>bash</code> package from the <a href="https://nixos.org/nixos/packages.html">Nix Packages
 collection</a>.  <code>nix-build</code> prints the path where the build result is
 stored.  By default, <code>nix-build</code> also creates a symbolic link to the build
 result in the current working directory so it&#8217;s easy to verify if we find the
 string we&nbsp;expect:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> &lt; result
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>&lt; result
 <span class="go">hello from Nix</span>
 </code></pre></div>
-
 
 <p>To see the internal structure of the derivation, run the&nbsp;command:</p>
 <div class="highlight"><pre><span></span><code><span class="go">nix show-derivation /nix/store/qcnf97fclrnqppq3h5ld9smqdb8l2ybk-hello</span>
 </code></pre></div>
-
 
 <p>which outputs data structure as shown in the previous&nbsp;section.</p>
 <h1>Composing an operating&nbsp;system</h1>
@@ -249,7 +239,6 @@ achieve this scale, higher-level abstractions are built from the Nix language&nb
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Modules are useful for configuring complete subsystems such as networking,
 printing, graphics and so on.  The top-level NixOS configuration, typically
 stored in <code>/etc/nixos/configuration.nix</code>, is a module itself which may include
@@ -258,7 +247,6 @@ other&nbsp;modules.</p>
 open ports of your&nbsp;system:</p>
 <div class="highlight"><pre><span></span><code>networking<span class="o">.</span>firewall<span class="o">.</span><span class="ss">allowedTCPPorts =</span> <span class="p">[</span> <span class="mi">80</span> <span class="p">];</span>
 </code></pre></div>
-
 
 <p>The module keeps the intricacies of generating iptables rules within its
 implementation.  Our system configuration remains simple and&nbsp;declarative.</p>

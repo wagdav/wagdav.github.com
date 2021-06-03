@@ -97,7 +97,6 @@ services<span class="o">.</span>consul<span class="o">.</span><span class="ss">c
 networking<span class="o">.</span>firewall<span class="o">.</span><span class="ss">allowedTCPPorts =</span> <span class="p">[</span> <span class="mi">9090</span> <span class="p">];</span>
 </code></pre></div>
 
-
 <p>This snippet adjusts three separate&nbsp;components:</p>
 <ul>
 <li>Enable and configure&nbsp;Prometheus</li>
@@ -126,7 +125,6 @@ document</a>:</p>
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>the <span class="caps">GPIO</span> ports of a <span class="caps">LED</span> controller equipped with an infrared receiver are
 assigned like&nbsp;this:</p>
 <div class="highlight"><pre><span></span><code>tasmota<span class="o">.</span>template <span class="p">{</span>
@@ -139,7 +137,6 @@ assigned like&nbsp;this:</p>
   <span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div>
-
 
 <p>The sensors publish their data over <span class="caps">MQTT</span>.  Then, a <a href="https://www.influxdata.com/time-series-platform/telegraf/">Telegraf</a> service
 exports the <span class="caps">MQTT</span> messages for Prometheus.  Finally, the Prometheus time series

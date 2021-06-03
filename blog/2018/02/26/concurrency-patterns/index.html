@@ -64,7 +64,6 @@ performing search&nbsp;engine.</p>
     <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>We represent the search query with a simple string and the kinds of search we
 can perform with product-type.  The role of the imported functions will be
 clear as we go&nbsp;along.</p>
@@ -82,7 +81,6 @@ run, yields the search result as a&nbsp;string:</p>
         <span class="n">microseconds</span> <span class="ow">=</span> <span class="p">(</span><span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>Our search back-end won&#8217;t get any more sophisticated than&nbsp;this:</p>
 <ul>
 <li>we make the current thread sleep for a random number amount of milliseconds,&nbsp;then</li>
@@ -97,14 +95,12 @@ serve this request.  We want to print these results so we write a small helper&n
     <span class="kt">Nothing</span>  <span class="ow">-&gt;</span> <span class="n">putStrLn</span> <span class="s">&quot;timed out&quot;</span>
 </code></pre></div>
 
-
 <p>This function takes an optional list of strings and prints them on the console.
 If the argument is <code>Nothing</code> it means that the search request timed out (we
 will see this later).  At this stage this function looks more generic than it
 needs to be.  Probably you would start with a simpler signature, something&nbsp;like:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">printResults</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
 </code></pre></div>
-
 
 <p>and make it more complex <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">when needed</a>.  This would make more sense and I
 also started with this initially.  However, for the sake of this post, we will
@@ -120,14 +116,12 @@ searches&nbsp;sequentially:</p>
     <span class="n">printResults</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">req</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>We use <code>mapM</code> to sequentially perform the three kinds of searches.  The result
 of a typical search using <code>haskell</code> as a query would look&nbsp;like:</p>
 <div class="highlight"><pre><span></span><code><span class="go">[&quot;Web results for &#39;haskell&#39; in 27 ms&quot;,</span>
 <span class="go"> &quot;Image results for &#39;haskell&#39; in 61 ms&quot;,</span>
 <span class="go"> &quot;Video results for &#39;haskell&#39; in 17 ms&quot;]</span>
 </code></pre></div>
-
 
 <p>Since the searches are performed sequentially it takes 27 + 61 + 17 = 105 ms to
 serve the results to the user.  This post won&#8217;t be about concurrency if we were
@@ -145,7 +139,6 @@ search&nbsp;engine:</p>
     <span class="n">req</span> <span class="ow">&lt;-</span> <span class="n">mapConcurrently</span> <span class="p">(</span><span class="n">fakeSearch</span> <span class="n">query</span><span class="p">)</span> <span class="p">[</span><span class="kt">Web</span><span class="p">,</span> <span class="kt">Image</span><span class="p">,</span> <span class="kt">Video</span><span class="p">]</span>
     <span class="n">printResults</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">req</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The <code>mapConcurrently</code> combinator from the <a href="http://hackage.haskell.org/package/async-2.2.1/docs/Control-Concurrent-Async.html#v:mapConcurrently">async</a> library will launch three
 light-weight threads and perform the three search actions concurrently.  The
@@ -175,7 +168,6 @@ message and we send our sincerest apologies to our&nbsp;user.</p>
     <span class="n">printResults</span> <span class="n">req</span>
 </code></pre></div>
 
-
 <p>Again, we only have to do a small modification to get the desired behavior.
 The search actions are wrapped in a <code>timeout</code> call.  The signature of this
 function&nbsp;is:</p>
@@ -184,19 +176,16 @@ function&nbsp;is:</p>
         <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="p">(</span><span class="kt">Maybe</span> <span class="n">a</span><span class="p">)</span>  <span class="c1">-- (Just a) if less than the delay elapsed else Nothing</span>
 </code></pre></div>
 
-
 <p>We can run this version a couple of times and we will see two kinds of outputs.
 If all requests take less than 80ms <code>printResults</code> will behave as&nbsp;before:</p>
-<div class="highlight"><pre><span></span><code><span class="err">[&quot;Web results for &#39;haskell&#39; in 70 ms&quot;,</span>
-<span class="err"> &quot;Web results for &#39;haskell&#39; in 67 ms&quot;,</span>
-<span class="err"> &quot;Video results for &#39;haskell&#39; in 63 ms&quot;]</span>
+<div class="highlight"><pre><span></span><code>[<span class="s2">&quot;</span><span class="s">Web results for &#39;haskell&#39; in 70 ms</span><span class="s2">&quot;</span>,
+ <span class="s2">&quot;</span><span class="s">Web results for &#39;haskell&#39; in 67 ms</span><span class="s2">&quot;</span>,
+ <span class="s2">&quot;</span><span class="s">Video results for &#39;haskell&#39; in 63 ms</span><span class="s2">&quot;</span>]
 </code></pre></div>
-
 
 <p>otherwise, and this is why <code>printResults</code> takes a <code>Maybe [String]</code> as&nbsp;input,</p>
-<div class="highlight"><pre><span></span><code><span class="err">timed out</span>
+<div class="highlight"><pre><span></span><code>timed out
 </code></pre></div>
-
 
 <p>is&nbsp;printed.</p>
 <h1>Search&nbsp;3.0</h1>
@@ -219,13 +208,11 @@ problem and responds slowly we can still get back a response from the&nbsp;other
         <span class="kt">Right</span> <span class="n">r</span> <span class="ow">-&gt;</span> <span class="s">&quot;Server2: &quot;</span> <span class="o">++</span> <span class="n">r</span>
 </code></pre></div>
 
-
 <p>This function have the same interface as <code>fakesearch</code> but internally it sends
 the same query two times to two different servers and keeps the result from the
 fastest.  The <code>race</code> combinator from the <a href="http://hackage.haskell.org/package/async-2.2.1/docs/Control-Concurrent-Async.html#v:race">async</a>&nbsp;library:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">race</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="n">b</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="p">(</span><span class="kt">Either</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>helps us to achieve this.  It launches the two <span class="caps">IO</span> actions in parallel and keeps
 the result from the fastest.  The other action will be terminated.  There is no
@@ -242,19 +229,17 @@ served&nbsp;from.</p>
     <span class="n">printResults</span> <span class="n">req</span>
 </code></pre></div>
 
-
 <p>Let&#8217;s see some typical&nbsp;results:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> search30
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>search30
 <span class="go">[&quot;Server1: Web results for &#39;haskell&#39; in 29 ms&quot;,</span>
 <span class="go"> &quot;Server1: Image results for &#39;haskell&#39; in 36 ms&quot;,</span>
 <span class="go"> &quot;Server2: Video results for &#39;haskell&#39; in 49 ms&quot;]</span>
 
-<span class="gp">$</span> search30
+<span class="gp">$ </span>search30
 <span class="go">[&quot;Server2: Web results for &#39;haskell&#39; in 19 ms&quot;,</span>
 <span class="go"> &quot;Server2: Image results for &#39;haskell&#39; in 50 ms&quot;,</span>
 <span class="go"> &quot;Server1: Video results for &#39;haskell&#39; in 39 ms&quot;]</span>
 </code></pre></div>
-
 
 <p>We can see that in the first run the web and image results were served by the
 first replica, while the video result comes from the second.  In the second

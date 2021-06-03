@@ -48,7 +48,6 @@ search engine which looked like&nbsp;this:</p>
     <span class="n">printResults</span> <span class="n">req</span>
 </code></pre></div>
 
-
 <p>I argued that this was a fast, concurrent, replicated and robust version of the
 previous iterations.  In the following sections I am going to improve this
 example, therefore I suggest reading <a href="../../../../../blog/2018/02/26/concurrency-patterns/">the related post to understand how we got
@@ -64,7 +63,6 @@ here</a>.</p>
         <span class="kt">Left</span>  <span class="n">r</span> <span class="ow">-&gt;</span> <span class="s">&quot;Server1: &quot;</span> <span class="o">++</span> <span class="n">r</span>
         <span class="kt">Right</span> <span class="n">r</span> <span class="ow">-&gt;</span> <span class="s">&quot;Server2: &quot;</span> <span class="o">++</span> <span class="n">r</span>
 </code></pre></div>
-
 
 <p><code>fastest</code> sends the search query to two replicas of the search backend and
 keeps the result from the faster responding server.  The <code>race</code> function from
@@ -98,14 +96,12 @@ locate these two&nbsp;functions:</p>
 <span class="c1">-- operations as soon as one has completed.</span>
 </code></pre></div>
 
-
 <p>This looks promising: we can use <code>waitAnyCancel</code> to achieve the same behavior
 as <code>race</code> but for a list of asynchronous&nbsp;operations.</p>
 <p>We cannot just replace <code>race</code> with <code>waitAnyCancel</code> because the type signatures
 of the two functions are different.  For reference, this is <code>race</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">race</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="n">b</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="p">(</span><span class="kt">Either</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>We need to think a bit more how to fit <code>waitAnyCancel</code> into <code>fastest</code>.</p>
 <h1>Building&nbsp;blocks</h1>
@@ -114,7 +110,6 @@ operation that yields a value of type <code>a</code>.  Asynchronous operations c
 spawned using the <code>async</code> function:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">async</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="p">(</span><span class="kt">Async</span> <span class="n">a</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The type of the expression <code>fakesearch query kind</code> is <code>IO String</code>.  Feeding
 this to <code>async</code>, <code>async (fakesearch query kind)</code>, we get an <code>IO (Async String)</code>
@@ -132,7 +127,6 @@ a function which prepends the server&#8217;s identity to the search&nbsp;result:
 <div class="highlight"><pre><span></span><code><span class="c1">-- prepend the server&#39;s identity to the search result</span>
 <span class="nf">servedBy</span> <span class="n">i</span> <span class="n">result</span> <span class="ow">=</span> <span class="s">&quot;Server &quot;</span> <span class="o">++</span> <span class="p">(</span><span class="n">show</span> <span class="n">i</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot;: &quot;</span> <span class="o">++</span> <span class="n">result</span>
 </code></pre></div>
-
 
 <p>For example, in case of the second server replica the transformed search action
 would read: <code>servedBy 2 &lt;$&gt; fakeSearch query kind</code>.  The type of this
@@ -156,7 +150,6 @@ and their types were&nbsp;modified:</p>
 <span class="nf">\</span><span class="n">i</span> <span class="ow">-&gt;</span> <span class="n">async</span> <span class="p">(</span><span class="n">servedBy</span> <span class="n">i</span> <span class="o">&lt;$&gt;</span> <span class="n">fakesearch</span> <span class="n">query</span> <span class="n">kind</span><span class="p">)</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="p">(</span><span class="kt">Async</span> <span class="kt">String</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>In the last two lambda-expressions I kept the replica number as a free
 parameter, a form we can reuse in the final&nbsp;step.</p>
 <h1>Final&nbsp;implementation</h1>
@@ -171,7 +164,6 @@ parameter, a form we can reuse in the final&nbsp;step.</p>
   <span class="kr">where</span> <span class="n">numReplicas</span> <span class="ow">=</span> <span class="mi">3</span>
         <span class="n">servedBy</span> <span class="n">i</span> <span class="n">result</span> <span class="ow">=</span> <span class="s">&quot;Server &quot;</span> <span class="o">++</span> <span class="n">show</span> <span class="n">i</span> <span class="o">++</span> <span class="s">&quot;: &quot;</span> <span class="o">++</span> <span class="n">result</span>
 </code></pre></div>
-
 
 <p>① Use <code>forM</code> to transform a list of integers, the replica identifiers, by
   applying the provided function. <code>requests</code> has a type <code>[Async String]</code>,

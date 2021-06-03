@@ -191,7 +191,6 @@ they deem most fitting but the user can think of it as a function no matter&nbsp
 <div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Task</span> <span class="n">a</span> <span class="n">b</span> <span class="ow">=</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="n">b</span>
 </code></pre></div>
 
-
 <p>A Task is a <em>function</em> with two type parameters <code>a</code> and <code>b</code> representing its
 input and output types, respectively.  To express possible failure, the output
 is wrapped in Haskell&#8217;s <code>Maybe</code> type.  In other languages this is called
@@ -205,7 +204,6 @@ What matters is that our model, the Task&#8217;s meaning, is mathematical&nbsp;f
 <span class="nf">release</span> <span class="ow">::</span> <span class="kt">CompiledBinary</span>
         <span class="ow">-&gt;</span> <span class="kt">TestReport</span>     <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="kt">PackageURL</span>
 </code></pre></div>
-
 
 <p>These are <em>not</em> the implementation of these tasks but their definition
 expressed as Haskell&nbsp;code.</p>
@@ -221,12 +219,10 @@ with this type&nbsp;signature:</p>
            <span class="ow">-&gt;</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="n">c</span>
 </code></pre></div>
 
-
 <p>we could express the pull request validating task&nbsp;as:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">validatePullRequests</span> <span class="ow">::</span> <span class="kt">SourceCode</span> <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="kt">TestReport</span>
 <span class="nf">validatePullRequests</span> <span class="ow">=</span> <span class="n">inSequence</span> <span class="n">build</span> <span class="n">test</span>
 </code></pre></div>
-
 
 <p>where</p>
 <ul>
@@ -247,7 +243,6 @@ types are wrapped in <code>Maybe</code>.</p>
 <span class="nf">integrationTests</span> <span class="ow">::</span> <span class="kt">SourceCode</span> <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="kt">IntegrationTestReport</span>
 </code></pre></div>
 
-
 <p>These two test suites could be run in parallel, because they both only depend
 on the <code>SourceCode</code> value.</p>
 <p>We don&#8217;t want to introduce a new concept, but we want the result of parallel
@@ -258,7 +253,6 @@ type&nbsp;signature:</p>
            <span class="ow">-&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 </code></pre></div>
 
-
 <p>The composite task yields the results of input tasks as a tuple.  If <em>any</em> of
 the two task fails, the result of the composite task is failure (represented by
 the value <code>Nothing</code>).</p>
@@ -268,14 +262,12 @@ the value <code>Nothing</code>).</p>
 <span class="nf">runAllTests</span> <span class="ow">=</span> <span class="n">inParallel</span> <span class="n">unitTests</span> <span class="n">integrationTests</span>
 </code></pre></div>
 
-
 <p>The <code>inParallel</code> operator represents a &#8220;fan-out&#8221; structure in the pipeline
 where independent transformation steps are applied on the same&nbsp;input.</p>
 <h1>Semantic&nbsp;model</h1>
 <p>In the previous sections we&#8217;ve defined a denotational model for <span class="caps">CI</span>/<span class="caps">CD</span> build&nbsp;tasks:</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Task</span> <span class="n">a</span> <span class="n">b</span> <span class="ow">=</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Maybe</span> <span class="n">b</span>
 </code></pre></div>
-
 
 <p>which maps the Task concept to its meaning, a mathematical object.  This serves
 not only as a mental model, but also it allows us introduce regular and
@@ -290,7 +282,6 @@ without explanation, here are their&nbsp;definitions:</p>
 <span class="nf">inParallel</span> <span class="ow">::</span> <span class="kt">Task</span> <span class="n">a</span> <span class="n">b</span> <span class="ow">-&gt;</span> <span class="kt">Task</span> <span class="n">a</span> <span class="n">c</span> <span class="ow">-&gt;</span> <span class="kt">Task</span> <span class="n">a</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 <span class="nf">inParallel</span> <span class="n">t1</span> <span class="n">t2</span> <span class="n">x</span> <span class="ow">=</span> <span class="n">liftA2</span> <span class="p">(,)</span> <span class="p">(</span><span class="n">t1</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">t2</span> <span class="n">x</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>These combinators are expressed using the task&#8217;s semantic model without
 operational terms or unnecessary limiting&nbsp;assumptions.</p>

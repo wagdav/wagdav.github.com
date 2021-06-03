@@ -58,7 +58,6 @@ three-dimensional world point coordinates to two-dimensional image point&nbsp;co
 <div class="highlight"><pre><span></span><code><span class="nf">project</span> <span class="ow">::</span> <span class="kt">WorldPoint</span> <span class="ow">-&gt;</span> <span class="kt">ImagePoint</span>
 </code></pre></div>
 
-
 <p>where I assume that some reasonable definitions of <code>WorldPoint</code> and
 <code>ImagePoint</code> exist.  That is, given a world point <code>project</code> returns a point on
 the camera&#8217;s image&nbsp;plane.</p>
@@ -67,7 +66,6 @@ the camera&#8217;s image&nbsp;plane.</p>
    <span class="o">...</span>
    <span class="k">return</span> <span class="n">image_point</span>
 </code></pre></div>
-
 
 <p>The concrete implementation of <code>project</code> is not important.  For the sake of
 this article we can assume that all relevant camera parameters are available in
@@ -79,11 +77,9 @@ world point is just a matter of calling <code>project</code>.  It&#8217;s easy b
 <div class="highlight"><pre><span></span><code><span class="n">project</span><span class="p">(</span><span class="n">world_point</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>and&nbsp;Haskell:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">project</span> <span class="n">worldPoint</span>
 </code></pre></div>
-
 
 <p>In a real world program, however, the situation is rarely that&nbsp;simple.</p>
 <h1>Missing&nbsp;value</h1>
@@ -99,13 +95,11 @@ a conditional to check for&nbsp;it:</p>
     <span class="c1"># handle the missing value</span>
 </code></pre></div>
 
-
 <p>This is a common pattern, you find such conditionals in every code&nbsp;base.</p>
 <p>In Haskell we could accept the world point wrapped in a <code>Maybe</code> type and use
 <code>fmap</code> to compute a projection in case the world point value is&nbsp;present:</p>
 <div class="highlight"><pre><span></span><code><span class="kr">let</span> <span class="n">maybeImagePoint</span> <span class="ow">=</span> <span class="n">fmap</span> <span class="n">project</span> <span class="n">maybeWorldPoint</span>
 </code></pre></div>
-
 
 <p>where the type of the input and output values are <code>Maybe WorldPoint</code> and
 <code>Maybe ImagePoint</code>,&nbsp;respectively.</p>
@@ -119,11 +113,9 @@ list comprehension and&nbsp;write:</p>
 <div class="highlight"><pre><span></span><code><span class="n">image_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">project</span><span class="p">(</span><span class="n">world_point</span><span class="p">)</span> <span class="k">for</span> <span class="n">world_point</span> <span class="ow">in</span> <span class="n">scene</span><span class="p">]</span>
 </code></pre></div>
 
-
 <p>or more succinctly, using the built-in <code>map</code> function:</p>
 <div class="highlight"><pre><span></span><code><span class="n">image_points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">scene</span><span class="p">))</span>
 </code></pre></div>
-
 
 <p>In <a href="https://pythonclock.org/">Python 3</a>, <code>map</code> returns an iterator which we
 explicitly convert to a&nbsp;list.</p>
@@ -131,7 +123,6 @@ explicitly convert to a&nbsp;list.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- type Scene = [WorldPoint]</span>
 <span class="kr">let</span> <span class="n">imagePoints</span> <span class="ow">=</span> <span class="n">fmap</span> <span class="n">project</span> <span class="n">scene</span>
 </code></pre></div>
-
 
 <p>where the type of <code>imagePoints</code> is a list of image&nbsp;points.</p>
 <p>This is almost identical to the Python code using <code>map</code>.  List is a functor,
@@ -149,7 +140,6 @@ can apply <code>project</code> we need to read and decode the data&nbsp;file.</p
    <span class="o">...</span>
 </code></pre></div>
 
-
 <p>This is also fairly common pattern:  the exception handler, if we don&#8217;t forget
 to write it, allows us to handle the potential&nbsp;errors.</p>
 <p>In Haskell, it&#8217;s again just <code>fmap</code>:</p>
@@ -157,7 +147,6 @@ to write it, allows us to handle the potential&nbsp;errors.</p>
 <span class="c1">-- imagePointOrError :: Either ImagePoint DecodeError</span>
 <span class="kr">let</span> <span class="n">imagePointOrError</span> <span class="ow">=</span> <span class="n">fmap</span> <span class="n">project</span> <span class="n">worldPointOrError</span>
 </code></pre></div>
-
 
 <p>Here <code>Either WorldPoint</code> is the functor and <code>fmap</code> acts as follows: if the
 decoding is successful <code>project</code> is applied on the returned value.  In case of
@@ -181,7 +170,6 @@ concurrent code using the async/await&nbsp;syntax:</p>
 
 <span class="n">image_point</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">async_image_point</span><span class="p">())</span>  <span class="c1"># ③</span>
 </code></pre></div>
-
 
 <ol>
 <li>
@@ -211,7 +199,6 @@ concurrent code using the async/await&nbsp;syntax:</p>
   <span class="n">wait</span> <span class="p">(</span><span class="n">fmap</span> <span class="n">project</span> <span class="n">worldPoint</span><span class="p">)</span>           <span class="c1">-- ③</span>
 </code></pre></div>
 
-
 <ol>
 <li>
 <p><code>readFromNetwork</code> simulates the network <span class="caps">IO</span>: the body of this function can be
@@ -232,7 +219,6 @@ concurrent code using the async/await&nbsp;syntax:</p>
 <p>By looking at the type signature of <code>fmap</code> specialized to this&nbsp;example:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">fmap</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">WorldPoint</span> <span class="ow">-&gt;</span> <span class="kt">ImagePoint</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kt">Async</span> <span class="kt">WorldPoint</span> <span class="ow">-&gt;</span> <span class="kt">Async</span> <span class="kt">ImagePoint</span>
 </code></pre></div>
-
 
 <p>We can see that <code>fmap</code> constructs a new asynchronous action where the provided
 function is applied to the result of the provided asynchronous action.  It
