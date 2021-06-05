@@ -1,5 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Wagner</title><link href="https://thewagner.net/" rel="alternate"></link><link href="https://thewagner.net/feeds/all.atom.xml" rel="self"></link><id>https://thewagner.net/</id><updated>2021-03-07T00:00:00+01:00</updated><entry><title>Markov-chain word generation</title><link href="https://thewagner.net/blog/2021/03/07/markov-chain-word-generation/" rel="alternate"></link><published>2021-03-07T00:00:00+01:00</published><updated>2021-03-07T00:00:00+01:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2021-03-07:/blog/2021/03/07/markov-chain-word-generation/</id><summary type="html">&lt;p&gt;Recently I reread some chapters of the book &lt;a href="https://www.cs.princeton.edu/~bwk/tpop.webpage/"&gt;The Practice of Programming by
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Wagner</title><link href="https://thewagner.net/" rel="alternate"></link><link href="https://thewagner.net/feeds/all.atom.xml" rel="self"></link><id>https://thewagner.net/</id><updated>2021-06-05T00:00:00+02:00</updated><entry><title>Practicing writing</title><link href="https://thewagner.net/blog/2021/06/05/practicing-writing/" rel="alternate"></link><published>2021-06-05T00:00:00+02:00</published><updated>2021-06-05T00:00:00+02:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2021-06-05:/blog/2021/06/05/practicing-writing/</id><summary type="html">&lt;p&gt;In the past years I&amp;#8217;ve been learning about technical writing.  In this article
+I review two books that helped me to improve my writing skills. Then, I present
+how I practice writing at home and at&amp;nbsp;work.&lt;/p&gt;
+&lt;h1&gt;Discovering&amp;nbsp;writing&lt;/h1&gt;
+&lt;p&gt;As a scientist I published technical reports, journal papers and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the past years I&amp;#8217;ve been learning about technical writing.  In this article
+I review two books that helped me to improve my writing skills. Then, I present
+how I practice writing at home and at&amp;nbsp;work.&lt;/p&gt;
+&lt;h1&gt;Discovering&amp;nbsp;writing&lt;/h1&gt;
+&lt;p&gt;As a scientist I published technical reports, journal papers and even a 200
+pages long &lt;a href="https://infoscience.epfl.ch/record/186309"&gt;doctoral thesis&lt;/a&gt;, but I knew little about &lt;em&gt;writing&lt;/em&gt;, a
+communication skill that can be learned and improved.  I left academia and I
+got a job as a software engineer.  I stopped following science and started
+learning programming languages and study industry best&amp;nbsp;practices.&lt;/p&gt;
+&lt;p&gt;One summer I read &lt;a href="https://basecamp.com/books/rework"&gt;&lt;span class="caps"&gt;REWORK&lt;/span&gt;&lt;/a&gt;, a book written by Basecamp&amp;#8217;s founders.  The
+chapter &lt;em&gt;Hire great writers&lt;/em&gt; explains the authors&amp;#8217; preference in hiring
+candidates who can demonstrate great writing skills because clear and efficient
+written communication is essential in their distributed and asynchronous
+working style.  I was an employee and I didn&amp;#8217;t plan to hire anybody, but the
+emphasis on high-quality writing inspired me to become a better&amp;nbsp;writer.&lt;/p&gt;
+&lt;p&gt;I looked at my own &lt;a href="https://thewagner.net/blog/2016/07/20/working-habits/"&gt;working habits&lt;/a&gt;
+and, somewhat naively, realized the obvious: &lt;em&gt;I write all the time&lt;/em&gt;.  Instant
+messaging, code commits, pull-requests, code reviews, project proposals,
+incident reports are all a form of writing.  I wanted to learn what good
+writing is and how to write&amp;nbsp;well.&lt;/p&gt;
+&lt;p&gt;I searched for resources targeted at  practitioners who write technical text.
+In the next sections I present a two books from which I learned the&amp;nbsp;most.&lt;/p&gt;
+&lt;h1&gt;Book: &lt;span class="caps"&gt;BUGS&lt;/span&gt; In&amp;nbsp;Writing&lt;/h1&gt;
+&lt;p&gt;The book &lt;a href="https://www.amazon.com/BUGS-Writing-Revised-Guide-Debugging/dp/020137921X"&gt;&lt;span class="caps"&gt;BUGS&lt;/span&gt; In Writing by Lyn Dupré&lt;/a&gt; is a catalog of common
+mistakes in writing.  It comprises short, easily digestible segments.  Each
+segment presents a principle to make your technical writing clear and lucid.
+The principles are illustrated by witty example phrases and numerous cat&amp;nbsp;photos.&lt;/p&gt;
+&lt;p&gt;I encountered this book through a reference in the Chris Okasaki&amp;#8217;s thesis
+&lt;a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf"&gt;Purely Functional Data Structures&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I was extremely fortunate to have had excellent English teachers in high
+school. Lori Huenink deserves special recognition; her writing and public
+speaking classes are undoubtedly the most valuable classes I have ever taken,
+in any subject. In the same vein, I was lucky enough to read my wife&amp;#8217;s copy
+of Lyn Dupre&amp;#8217;s &lt;span class="caps"&gt;BUGS&lt;/span&gt; in Writing just as I was starting my thesis. If your
+career involves writing in any form, you owe it to yourself to buy a copy of
+this&amp;nbsp;book.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When I read this recommendation I immediately ordered a copy.  &lt;em&gt;&lt;span class="caps"&gt;BUGS&lt;/span&gt; in
+Writing&lt;/em&gt; is a fantastic handbook.  When I have doubts about a specific word or
+expression I search for advise in the&amp;nbsp;book.&lt;/p&gt;
+&lt;p&gt;To give a taste of Dupré&amp;#8217;s style, here&amp;#8217;s an example from the segment &lt;em&gt;Impact&lt;/em&gt;,
+where you learn about the one of the most overused, ugly words in the English&amp;nbsp;language:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are only two pleasing uses of &lt;em&gt;impact&lt;/em&gt;: to denote a forceful collision,
+and to mean packed or wedged&amp;nbsp;in.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here the principle is&amp;nbsp;that:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[&amp;#8230;] you should not use &lt;em&gt;impact&lt;/em&gt; when you mean &lt;em&gt;influence&lt;/em&gt; or &lt;em&gt;effect&lt;/em&gt;, and
+you certainly should not use &lt;em&gt;impact&lt;/em&gt; when you mean &lt;em&gt;affect&lt;/em&gt;, because
+impacting people is incredibly&amp;nbsp;impolite.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When you learn about such principles you develop ear for detecting bugs in
+texts and your tolerance for buzzwords and corporate jargon&amp;nbsp;decreases.&lt;/p&gt;
+&lt;h1&gt;Book: On Writing&amp;nbsp;Well&lt;/h1&gt;
+&lt;p&gt;William Zinsser &lt;a href="https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548"&gt;On Writing Well&lt;/a&gt; is really what its subtitle
+claims: the classic guide to writing nonfiction.  This book showed me how a
+professional writer thinks about writing methods, style, structure and genres.
+The book has a chapter on writing about science and technology but it also
+treats business writing, writing about arts, sports and even&amp;nbsp;memoirs.&lt;/p&gt;
+&lt;p&gt;Zinsser warns about clutter, every piece of text that doesn&amp;#8217;t do useful work.
+He suggests to strip every sentence to its barest bones: delete pompous words,
+redundant adjectives, jargon and replace laborious phrases with a short words
+that mean the same&amp;nbsp;thing.&lt;/p&gt;
+&lt;p&gt;Writing a clean sentence is hard work.  And the work is non-linear and
+iterative: &lt;em&gt;rewriting is the essence of writing&lt;/em&gt; as Zinsser puts&amp;nbsp;it.&lt;/p&gt;
+&lt;h1&gt;Writing a&amp;nbsp;blog&lt;/h1&gt;
+&lt;p&gt;In 2013 I published the &lt;a href="https://thewagner.net/blog/2013/03/06/hello-world/"&gt;first article&lt;/a&gt; on this blog. I wanted to
+write, but I didn&amp;#8217;t know what to write about.  A common dilemma for many
+aspiring writer.  In a few years I published a handful of short articles on
+random topics.  Some of them were meta-articles on &lt;a href="https://thewagner.net/blog/2013/03/08/pelican-up-and-running/"&gt;setting up this
+blog&lt;/a&gt;.  Some were as simple as connecting a &lt;a href="https://thewagner.net/blog/2013/06/26/led-and-button/"&gt;&lt;span class="caps"&gt;LED&lt;/span&gt; and a
+button&lt;/a&gt; to a Raspberry Pi.  Unexpectedly, I had a few &amp;#8220;hits&amp;#8221; too: many
+friends liked the article on &lt;a href="https://thewagner.net/blog/2016/07/20/working-habits/"&gt;my working habits&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Around 2017 I changed my writing strategy.  Instead of overthinking the subject
+of my next article, I decided that my hobby projects should end with an entry
+on my blog.  While working on a project I take notes and write outlines.  When
+I&amp;#8217;m finished (or bored) I have a seed of a new article.  I still have to work
+hard to make my notes into a coherent story, but I feel that goal, the
+published article, is&amp;nbsp;reachable.&lt;/p&gt;
+&lt;h1&gt;Writing at&amp;nbsp;work&lt;/h1&gt;
+&lt;p&gt;In my team we communicate code improvements via pull-requests, changesets that
+typically comprise few dozen to few hundred lines of code.  We prefer small
+batches of code changes that are easy to understand, review and the risk of
+breaking existing systems is lower than if we changed everything at once.  But
+through these incremental changes it&amp;#8217;s hard to see the context in which a given
+pull-request makes&amp;nbsp;sense.&lt;/p&gt;
+&lt;p&gt;I felt the team needed a document that shows how each code change fits into the
+story of the project.  Earlier, my team had considered writing &lt;a href="https://en.wikipedia.org/wiki/Change_request"&gt;change request
+documents&lt;/a&gt; but some felt it bureaucratic and, frankly, we didn&amp;#8217;t know how to
+write them&amp;nbsp;well.&lt;/p&gt;
+&lt;p&gt;Last December at work I started new project that required changes in many
+subsystems.  I described my implementation plan on the company wiki.  In few
+sentences I created a &lt;em&gt;design document&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I started the implementation and as I learned more about the problem domain I
+refined the design and I updated the document with my progress.  If you&amp;#8217;d read
+the document you would have known what&amp;#8217;s been done and what&amp;#8217;s left to do. The
+wiki page became a &lt;em&gt;project page&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Of course my initial design had holes and I discovered traps and dead ends.  I
+recorded my failings on the same wiki page which evolved into an &lt;em&gt;experience
+report&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;When I finished the implementation I collected instructions for operators, the
+support team and for other developers, transforming the page into &lt;em&gt;project
+documentation&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;A few months later when I reread this page I found a &lt;em&gt;historical record&lt;/em&gt; that
+explains why and how we arrived to state we have&amp;nbsp;today.&lt;/p&gt;
+&lt;p&gt;During this process I found few practices&amp;nbsp;useful:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I rewrite the same document as we work on the project.  The document is
+  always the entry point for all project-relevant&amp;nbsp;information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I write prose with complete sentences to build context.  A few words with
+  bullet points, list of ticket IDs are&amp;nbsp;insufficient.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I often reference related content.  There&amp;#8217;s no need to repeat what&amp;#8217;s
+  explained&amp;nbsp;elsewhere.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I share every major revision with my colleagues asking for reviews and&amp;nbsp;suggestions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The time spent evolving this page was worth it.  I felt that the state of the
+page reflected the stage of the project.  If a project needs long pages to
+explain, it&amp;#8217;s too big.  If a few words can&amp;#8217;t express what I&amp;#8217;m doing, the
+project is ill-defined or I lack some knowledge to execute&amp;nbsp;it.&lt;/p&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;I&amp;#8217;ve been writing during my whole career, but only lately I&amp;#8217;ve been cultivating
+my writing skills.  I practice writing in my free time and professionally.  I&amp;#8217;m
+documenting my hobby projects and software experiments on my blog and write
+&amp;#8220;evolving&amp;#8221; documents on the company&amp;#8217;s internal&amp;nbsp;wiki.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Markov-chain word generation</title><link href="https://thewagner.net/blog/2021/03/07/markov-chain-word-generation/" rel="alternate"></link><published>2021-03-07T00:00:00+01:00</published><updated>2021-03-07T00:00:00+01:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2021-03-07:/blog/2021/03/07/markov-chain-word-generation/</id><summary type="html">&lt;p&gt;Recently I reread some chapters of the book &lt;a href="https://www.cs.princeton.edu/~bwk/tpop.webpage/"&gt;The Practice of Programming by
 Brian Kernighan and Rob Pike&lt;/a&gt;.  In Chapter 3 on &lt;em&gt;Design and
 Implementation&lt;/em&gt; the authors present several implementations of a random text
 generator to compare how various languages&amp;#8217; idioms express the same&amp;nbsp;idea.&lt;/p&gt;
