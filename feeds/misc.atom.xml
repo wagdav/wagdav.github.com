@@ -72,9 +72,9 @@ that mean the same&amp;nbsp;thing.&lt;/p&gt;
 iterative: &lt;em&gt;rewriting is the essence of writing&lt;/em&gt; as Zinsser puts&amp;nbsp;it.&lt;/p&gt;
 &lt;h1&gt;Writing a&amp;nbsp;blog&lt;/h1&gt;
 &lt;p&gt;In 2013 I published the &lt;a href="https://thewagner.net/blog/2013/03/06/hello-world/"&gt;first article&lt;/a&gt; on this blog. I wanted to
-write, but I didn&amp;#8217;t know what to write about.  A common dilemma for many
-aspiring writer.  In a few years I published a handful of short articles on
-random topics.  Some of them were meta-articles on &lt;a href="https://thewagner.net/blog/2013/03/08/pelican-up-and-running/"&gt;setting up this
+write, but I didn&amp;#8217;t know what to write about.  A common dilemma of the aspiring
+writer.  In a few years I published a handful of short articles on random
+topics.  Some of them were meta-articles on &lt;a href="https://thewagner.net/blog/2013/03/08/pelican-up-and-running/"&gt;setting up this
 blog&lt;/a&gt;.  Some were as simple as connecting a &lt;a href="https://thewagner.net/blog/2013/06/26/led-and-button/"&gt;&lt;span class="caps"&gt;LED&lt;/span&gt; and a
 button&lt;/a&gt; to a Raspberry Pi.  Unexpectedly, I had a few &amp;#8220;hits&amp;#8221; too: many
 friends liked the article on &lt;a href="https://thewagner.net/blog/2016/07/20/working-habits/"&gt;my working habits&lt;/a&gt;.&lt;/p&gt;
@@ -82,7 +82,7 @@ friends liked the article on &lt;a href="https://thewagner.net/blog/2016/07/20/w
 of my next article, I decided that my hobby projects should end with an entry
 on my blog.  While working on a project I take notes and write outlines.  When
 I&amp;#8217;m finished (or bored) I have a seed of a new article.  I still have to work
-hard to make my notes into a coherent story, but I feel that goal, the
+hard to make my notes into a coherent story, but I feel that the goal, the
 published article, is&amp;nbsp;reachable.&lt;/p&gt;
 &lt;h1&gt;Writing at&amp;nbsp;work&lt;/h1&gt;
 &lt;p&gt;In my team we communicate code improvements via pull-requests, changesets that
@@ -95,7 +95,7 @@ pull-request makes&amp;nbsp;sense.&lt;/p&gt;
 story of the project.  Earlier, my team had considered writing &lt;a href="https://en.wikipedia.org/wiki/Change_request"&gt;change request
 documents&lt;/a&gt; but some felt it bureaucratic and, frankly, we didn&amp;#8217;t know how to
 write them&amp;nbsp;well.&lt;/p&gt;
-&lt;p&gt;Last December at work I started new project that required changes in many
+&lt;p&gt;Last December at work I started a new project that required changes in many
 subsystems.  I described my implementation plan on the company wiki.  In few
 sentences I created a &lt;em&gt;design document&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;I started the implementation and as I learned more about the problem domain I
