@@ -24,14 +24,14 @@ messaging, code commits, pull-requests, code reviews, project proposals,
 incident reports are all a form of writing.  I wanted to learn what good
 writing is and how to write&amp;nbsp;well.&lt;/p&gt;
 &lt;p&gt;I searched for resources targeted at  practitioners who write technical text.
-In the next sections I present a two books from which I learned the&amp;nbsp;most.&lt;/p&gt;
+In the next sections I present two books from which I learned the&amp;nbsp;most.&lt;/p&gt;
 &lt;h1&gt;Book: &lt;span class="caps"&gt;BUGS&lt;/span&gt; In&amp;nbsp;Writing&lt;/h1&gt;
 &lt;p&gt;The book &lt;a href="https://www.amazon.com/BUGS-Writing-Revised-Guide-Debugging/dp/020137921X"&gt;&lt;span class="caps"&gt;BUGS&lt;/span&gt; In Writing by Lyn Dupré&lt;/a&gt; is a catalog of common
-mistakes in writing.  It comprises short, easily digestible segments.  Each
-segment presents a principle to make your technical writing clear and lucid.
-The principles are illustrated by witty example phrases and numerous cat&amp;nbsp;photos.&lt;/p&gt;
-&lt;p&gt;I encountered this book through a reference in the Chris Okasaki&amp;#8217;s thesis
-&lt;a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf"&gt;Purely Functional Data Structures&lt;/a&gt;:&lt;/p&gt;
+mistakes.  It comprises short, easily digestible segments.  Each segment
+presents a principle to make your technical writing clear and lucid.  The
+principles are illustrated by witty example phrases and numerous cat&amp;nbsp;photos.&lt;/p&gt;
+&lt;p&gt;I encountered this book through a reference in Chris Okasaki&amp;#8217;s thesis &lt;a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf"&gt;Purely
+Functional Data Structures&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I was extremely fortunate to have had excellent English teachers in high
 school. Lori Huenink deserves special recognition; her writing and public
@@ -66,7 +66,7 @@ The book has a chapter on writing about science and technology but it also
 treats business writing, writing about arts, sports and even&amp;nbsp;memoirs.&lt;/p&gt;
 &lt;p&gt;Zinsser warns about clutter, every piece of text that doesn&amp;#8217;t do useful work.
 He suggests to strip every sentence to its barest bones: delete pompous words,
-redundant adjectives, jargon and replace laborious phrases with a short words
+redundant adjectives, jargon and replace laborious phrases with short words
 that mean the same&amp;nbsp;thing.&lt;/p&gt;
 &lt;p&gt;Writing a clean sentence is hard work.  And the work is non-linear and
 iterative: &lt;em&gt;rewriting is the essence of writing&lt;/em&gt; as Zinsser puts&amp;nbsp;it.&lt;/p&gt;
@@ -85,12 +85,11 @@ I&amp;#8217;m finished (or bored) I have a seed of a new article.  I still have 
 hard to make my notes into a coherent story, but I feel that the goal, the
 published article, is&amp;nbsp;reachable.&lt;/p&gt;
 &lt;h1&gt;Writing at&amp;nbsp;work&lt;/h1&gt;
-&lt;p&gt;In my team we communicate code improvements via pull-requests, changesets that
-typically comprise few dozen to few hundred lines of code.  We prefer small
-batches of code changes that are easy to understand, review and the risk of
-breaking existing systems is lower than if we changed everything at once.  But
-through these incremental changes it&amp;#8217;s hard to see the context in which a given
-pull-request makes&amp;nbsp;sense.&lt;/p&gt;
+&lt;p&gt;In my team we improve code using pull-requests, changesets that typically
+comprise few dozen to few hundred lines of code.  We prefer small batches of
+code changes that are easy to review.  The risk of breaking existing systems is
+lower than if we changed everything at once.  But through these incremental
+changes it&amp;#8217;s hard to see the context in which a given pull-request makes&amp;nbsp;sense.&lt;/p&gt;
 &lt;p&gt;I felt the team needed a document that shows how each code change fits into the
 story of the project.  Earlier, my team had considered writing &lt;a href="https://en.wikipedia.org/wiki/Change_request"&gt;change request
 documents&lt;/a&gt; but some felt it bureaucratic and, frankly, we didn&amp;#8217;t know how to
@@ -110,7 +109,7 @@ support team and for other developers, transforming the page into &lt;em&gt;proj
 documentation&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;A few months later when I reread this page I found a &lt;em&gt;historical record&lt;/em&gt; that
 explains why and how we arrived to state we have&amp;nbsp;today.&lt;/p&gt;
-&lt;p&gt;During this process I found few practices&amp;nbsp;useful:&lt;/p&gt;
+&lt;p&gt;During this process I found a few practices&amp;nbsp;useful:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;I rewrite the same document as we work on the project.  The document is
