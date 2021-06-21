@@ -147,7 +147,7 @@ an application called <code>weather-data-collector</code> using the following
 </code></pre></div>
 
 <p>This copies the application&#8217;s locally built executable on the image&#8217;s
-filesystem.  The image contains no shell, no package manager, no additional
+file system.  The image contains no shell, no package manager, no additional
 libraries.  Both image size and its the attack surface is minimal.  This
 technique does work and creates an ideal container image and does solve all the
 issues raised in the previous&nbsp;section.</p>
@@ -180,7 +180,7 @@ capture <em>all</em> dependencies of a software component.  This makes it a grea
 for building ideal container images which contain the application, the
 application&#8217;s dependencies and <em>nothing else</em>.</p>
 <p>To demonstrate, here&#8217;s an example which packages the <span class="caps">HTML</span> pages of this blog
-and a webserver into a container&nbsp;image.</p>
+and a web server into a container&nbsp;image.</p>
 <div class="highlight"><pre><span></span><code><span class="ss">containerImage =</span> pkgs<span class="o">.</span>dockerTools<span class="o">.</span>buildLayeredImage
   <span class="p">{</span>
     <span class="ss">name =</span> <span class="s2">&quot;thewagner.net&quot;</span><span class="p">;</span>
@@ -207,7 +207,7 @@ locally running&nbsp;container.</p>
 Packages Collection</a> to build the container image.  The function&#8217;s
 arguments define the image&#8217;s name, contents and its configuration according to
 the <a href="https://opencontainers.org"><span class="caps">OCI</span></a> specification.  The function returns a derivation which builds a
-container image containing the Python interpreter, for the webserver, and the
+container image containing the Python interpreter, for the web server, and the
 static pages of my&nbsp;blog.</p>
 <p>In short, you list the components you want in the image and Nix copies those
 and their dependencies into the image archive.  Perhaps this summary sounds

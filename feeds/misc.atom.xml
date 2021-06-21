@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Wagner - misc</title><link href="https://thewagner.net/" rel="alternate"></link><link href="https://thewagner.net/feeds/misc.atom.xml" rel="self"></link><id>https://thewagner.net/</id><updated>2021-06-05T00:00:00+02:00</updated><entry><title>Practicing writing</title><link href="https://thewagner.net/blog/2021/06/05/practicing-writing/" rel="alternate"></link><published>2021-06-05T00:00:00+02:00</published><updated>2021-06-05T00:00:00+02:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2021-06-05:/blog/2021/06/05/practicing-writing/</id><summary type="html">&lt;p&gt;In the past years I&amp;#8217;ve been learning about technical writing.  In this article
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Wagner - misc</title><link href="https://thewagner.net/" rel="alternate"></link><link href="https://thewagner.net/feeds/misc.atom.xml" rel="self"></link><id>https://thewagner.net/</id><updated>2021-06-05T00:00:00+02:00</updated><entry><title>Practicing writing</title><link href="https://thewagner.net/blog/2021/06/05/practicing-writing/" rel="alternate"></link><published>2021-06-05T00:00:00+02:00</published><updated>2021-06-05T00:00:00+02:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2021-06-05:/blog/2021/06/05/practicing-writing/</id><summary type="html">&lt;p&gt;In the past years I have been learning about technical writing.  In this article
 I review two books that helped me to improve my writing skills. Then, I present
 how I practice writing at home and at&amp;nbsp;work.&lt;/p&gt;
 &lt;h1&gt;Discovering&amp;nbsp;writing&lt;/h1&gt;
-&lt;p&gt;As a scientist I published technical reports, journal papers and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the past years I&amp;#8217;ve been learning about technical writing.  In this article
+&lt;p&gt;As a scientist I published technical reports, journal papers and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the past years I have been learning about technical writing.  In this article
 I review two books that helped me to improve my writing skills. Then, I present
 how I practice writing at home and at&amp;nbsp;work.&lt;/p&gt;
 &lt;h1&gt;Discovering&amp;nbsp;writing&lt;/h1&gt;
@@ -37,7 +37,7 @@ Functional Data Structures&lt;/a&gt;:&lt;/p&gt;
 school. Lori Huenink deserves special recognition; her writing and public
 speaking classes are undoubtedly the most valuable classes I have ever taken,
 in any subject. In the same vein, I was lucky enough to read my wife&amp;#8217;s copy
-of Lyn Dupre&amp;#8217;s &lt;span class="caps"&gt;BUGS&lt;/span&gt; in Writing just as I was starting my thesis. If your
+of Lyn Dupré&amp;#8217;s &lt;span class="caps"&gt;BUGS&lt;/span&gt; in Writing just as I was starting my thesis. If your
 career involves writing in any form, you owe it to yourself to buy a copy of
 this&amp;nbsp;book.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -62,10 +62,10 @@ texts and your tolerance for buzzwords and corporate jargon&amp;nbsp;decreases.&
 &lt;p&gt;William Zinsser &lt;a href="https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548"&gt;On Writing Well&lt;/a&gt; is really what its subtitle
 claims: the classic guide to writing nonfiction.  This book showed me how a
 professional writer thinks about writing methods, style, structure and genres.
-The book has a chapter on writing about science and technology but it also
+The book has a chapter on writing about science and technology, but it also
 treats business writing, writing about arts, sports and even&amp;nbsp;memoirs.&lt;/p&gt;
 &lt;p&gt;Zinsser warns about clutter, every piece of text that doesn&amp;#8217;t do useful work.
-He suggests to strip every sentence to its barest bones: delete pompous words,
+He suggests stripping every sentence to its barest bones: delete pompous words,
 redundant adjectives, jargon and replace laborious phrases with short words
 that mean the same&amp;nbsp;thing.&lt;/p&gt;
 &lt;p&gt;Writing a clean sentence is hard work.  And the work is non-linear and
@@ -85,9 +85,9 @@ I&amp;#8217;m finished (or bored) I have a seed of a new article.  I still have 
 hard to make my notes into a coherent story, but I feel that the goal, the
 published article, is&amp;nbsp;reachable.&lt;/p&gt;
 &lt;h1&gt;Writing at&amp;nbsp;work&lt;/h1&gt;
-&lt;p&gt;In my team we improve code using pull-requests, changesets that typically
-comprise few dozen to few hundred lines of code.  We prefer small batches of
-code changes that are easy to review.  The risk of breaking existing systems is
+&lt;p&gt;In my team we improve code using pull-requests, changes that typically comprise
+few dozen to few hundred lines of code.  We prefer small batches of code
+changes that are easy to review.  The risk of breaking existing systems is
 lower than if we changed everything at once.  But through these incremental
 changes it&amp;#8217;s hard to see the context in which a given pull-request makes&amp;nbsp;sense.&lt;/p&gt;
 &lt;p&gt;I felt the team needed a document that shows how each code change fits into the
@@ -130,10 +130,10 @@ explains why and how we arrived to state we have&amp;nbsp;today.&lt;/p&gt;
 &lt;p&gt;The time spent evolving this page was worth it.  I felt that the state of the
 page reflected the stage of the project.  If a project needs long pages to
 explain, it&amp;#8217;s too big.  If a few words can&amp;#8217;t express what I&amp;#8217;m doing, the
-project is ill-defined or I lack some knowledge to execute&amp;nbsp;it.&lt;/p&gt;
+project is ill-defined, or I lack some knowledge to execute&amp;nbsp;it.&lt;/p&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
-&lt;p&gt;I&amp;#8217;ve been writing during my whole career, but only lately I&amp;#8217;ve been cultivating
-my writing skills.  I practice writing in my free time and professionally.  I&amp;#8217;m
+&lt;p&gt;I wrote during my whole career, but only lately I have been cultivating my
+writing skills.  I practice writing in my free time and professionally.  I&amp;#8217;m
 documenting my hobby projects and software experiments on my blog and write
 &amp;#8220;evolving&amp;#8221; documents on the company&amp;#8217;s internal&amp;nbsp;wiki.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Markov-chain word generation</title><link href="https://thewagner.net/blog/2021/03/07/markov-chain-word-generation/" rel="alternate"></link><published>2021-03-07T00:00:00+01:00</published><updated>2021-03-07T00:00:00+01:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2021-03-07:/blog/2021/03/07/markov-chain-word-generation/</id><summary type="html">&lt;p&gt;Recently I reread some chapters of the book &lt;a href="https://www.cs.princeton.edu/~bwk/tpop.webpage/"&gt;The Practice of Programming by
 Brian Kernighan and Rob Pike&lt;/a&gt;.  In Chapter 3 on &lt;em&gt;Design and
@@ -374,7 +374,7 @@ an application called &lt;code&gt;weather-data-collector&lt;/code&gt; using the 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This copies the application&amp;#8217;s locally built executable on the image&amp;#8217;s
-filesystem.  The image contains no shell, no package manager, no additional
+file system.  The image contains no shell, no package manager, no additional
 libraries.  Both image size and its the attack surface is minimal.  This
 technique does work and creates an ideal container image and does solve all the
 issues raised in the previous&amp;nbsp;section.&lt;/p&gt;
@@ -407,7 +407,7 @@ capture &lt;em&gt;all&lt;/em&gt; dependencies of a software component.  This mak
 for building ideal container images which contain the application, the
 application&amp;#8217;s dependencies and &lt;em&gt;nothing else&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;To demonstrate, here&amp;#8217;s an example which packages the &lt;span class="caps"&gt;HTML&lt;/span&gt; pages of this blog
-and a webserver into a container&amp;nbsp;image.&lt;/p&gt;
+and a web server into a container&amp;nbsp;image.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ss"&gt;containerImage =&lt;/span&gt; pkgs&lt;span class="o"&gt;.&lt;/span&gt;dockerTools&lt;span class="o"&gt;.&lt;/span&gt;buildLayeredImage
   &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="ss"&gt;name =&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;thewagner.net&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -434,7 +434,7 @@ locally running&amp;nbsp;container.&lt;/p&gt;
 Packages Collection&lt;/a&gt; to build the container image.  The function&amp;#8217;s
 arguments define the image&amp;#8217;s name, contents and its configuration according to
 the &lt;a href="https://opencontainers.org"&gt;&lt;span class="caps"&gt;OCI&lt;/span&gt;&lt;/a&gt; specification.  The function returns a derivation which builds a
-container image containing the Python interpreter, for the webserver, and the
+container image containing the Python interpreter, for the web server, and the
 static pages of my&amp;nbsp;blog.&lt;/p&gt;
 &lt;p&gt;In short, you list the components you want in the image and Nix copies those
 and their dependencies into the image archive.  Perhaps this summary sounds
@@ -610,10 +610,10 @@ is to figure out which&amp;nbsp;one.&lt;/p&gt;
 &lt;p&gt;The source code of all solutions are available on &lt;a href="https://github.com/wagdav/advent-of-code-2020"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;h1&gt;Acknowledgment&lt;/h1&gt;
 &lt;p&gt;Thanks &lt;a href="https://twitter.com/ericwastl"&gt;Eric Wastl&lt;/a&gt; for creating and running
-&lt;a href="https://adventofcode.com"&gt;Advent of Code&lt;/a&gt;.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Deploying with GitHub Actions and more Nix</title><link href="https://thewagner.net/blog/2020/12/06/deploying-with-github-actions-and-more-nix/" rel="alternate"></link><published>2020-12-06T00:00:00+01:00</published><updated>2020-12-06T00:00:00+01:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2020-12-06:/blog/2020/12/06/deploying-with-github-actions-and-more-nix/</id><summary type="html">&lt;p&gt;In July I described how I use TravisCI to deploy this static site to GitHub
+&lt;a href="https://adventofcode.com"&gt;Advent of Code&lt;/a&gt;.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Deploying with GitHub Actions and more Nix</title><link href="https://thewagner.net/blog/2020/12/06/deploying-with-github-actions-and-more-nix/" rel="alternate"></link><published>2020-12-06T00:00:00+01:00</published><updated>2020-12-06T00:00:00+01:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2020-12-06:/blog/2020/12/06/deploying-with-github-actions-and-more-nix/</id><summary type="html">&lt;p&gt;In July I described how I use Travis &lt;span class="caps"&gt;CI&lt;/span&gt; to deploy this static site to GitHub
 Pages using a Nix pipeline.  Before continuing I suggest reading &lt;a href="/blog/2020/07/03/deploying-thewagnernet/"&gt;that
 article&lt;/a&gt; because rest of this post builds on top of&amp;nbsp;that.&lt;/p&gt;
-&lt;p&gt;This article is about the changes I made in this blog&amp;#8217;s deployment …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In July I described how I use TravisCI to deploy this static site to GitHub
+&lt;p&gt;This article is about the changes I made in this blog&amp;#8217;s …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In July I described how I use Travis &lt;span class="caps"&gt;CI&lt;/span&gt; to deploy this static site to GitHub
 Pages using a Nix pipeline.  Before continuing I suggest reading &lt;a href="/blog/2020/07/03/deploying-thewagnernet/"&gt;that
 article&lt;/a&gt; because rest of this post builds on top of&amp;nbsp;that.&lt;/p&gt;
 &lt;p&gt;This article is about the changes I made in this blog&amp;#8217;s deployment process
@@ -755,7 +755,7 @@ for &lt;a href="https://pix4d.com"&gt;Pix4D&lt;/a&gt;, a medium-sized organizati
 &lt;/ul&gt;
 &lt;p&gt;We wanted a system to build our software products on all the major desktop
 and mobile platforms.  A few years back when the project started the scene of
-managed build automation tools was less exiting than today: TravisCI was a a
+managed build automation tools was less exiting than today: Travis &lt;span class="caps"&gt;CI&lt;/span&gt; was a a
 major player, GitLab was on the rise, GitHub Actions and CircleCI didn&amp;#8217;t&amp;nbsp;exist.&lt;/p&gt;
 &lt;p&gt;For various reasons we ruled out the available hosted options and we deployed
 &lt;a href="https://concourse-ci.org/"&gt;Concourse &lt;span class="caps"&gt;CI&lt;/span&gt;&lt;/a&gt; in our data centers.  Concourse
@@ -924,7 +924,7 @@ Nix&lt;/a&gt; and Nix is so much better
 than Kevlar ever wanted to be.  If the ideas in this article resonate with you
 I recommend to try building your &lt;a href="https://thewagner.net/blog/2020/07/03/deploying-thewagnernet/"&gt;next software delivery pipeline with
 Nix&lt;/a&gt;.&lt;/p&gt;
-&lt;h1&gt;Acknowledgement&lt;/h1&gt;
+&lt;h1&gt;Acknowledgment&lt;/h1&gt;
 &lt;p&gt;I dedicate this post to the memory of my friend and colleague &lt;a href="https://www.syrianspock.co"&gt;Salah
 Missri&lt;/a&gt; who tragically passed away earlier this
 year.  Salah was the biggest fan of Kevlar.  He patiently listened to me
@@ -1147,9 +1147,9 @@ anything, they ask me to perform a factory reset.  When this happens all custom
 configuration from the box is gone and I have to start from scratch.  I don&amp;#8217;t
 want my home network setup to depend on specific features of the &lt;span class="caps"&gt;ISP&lt;/span&gt;-provided&amp;nbsp;box.&lt;/p&gt;
 &lt;p&gt;I have a Linksys &lt;span class="caps"&gt;WRT3200ACM&lt;/span&gt; router connected to the &lt;span class="caps"&gt;ISP&lt;/span&gt;&amp;#8217;s box which also
-provides Wi-Fi for the apartment.  The router runs OpenWRT and &lt;a href="https://github.com/wagdav/homelab/blob/30a82d2/router/config"&gt;I use a
+provides WiFi for the apartment.  The router runs OpenWRT and &lt;a href="https://github.com/wagdav/homelab/blob/30a82d2/router/config"&gt;I use a
 script&lt;/a&gt; to modify the default settings: change the timezone,
-setup Wi-Fi and &lt;span class="caps"&gt;DNS&lt;/span&gt; aliases, install the Prometheus OpenWRT node&amp;nbsp;exporter.&lt;/p&gt;
+setup WiFi and &lt;span class="caps"&gt;DNS&lt;/span&gt; aliases, install the Prometheus OpenWRT node&amp;nbsp;exporter.&lt;/p&gt;
 &lt;h1&gt;NixOS&amp;nbsp;servers&lt;/h1&gt;
 &lt;p&gt;After a few weeks of &lt;a href="https://thewagner.net/blog/2020/04/30/exploring-nix/"&gt;exploration and learning&lt;/a&gt; I installed NixOS on all my
 computers at home, which&amp;nbsp;include:&lt;/p&gt;
@@ -1251,7 +1251,7 @@ NixOS&lt;/a&gt; on my&amp;nbsp;servers.&lt;/p&gt;
 tinkering&lt;/a&gt; in my homelab.  Deploying from a &lt;a href="https://github.com/wagdav/homelab"&gt;Git
 repository&lt;/a&gt; is easy and requires minimal maintenance.  I can
 reconfigure or even reinstall my whole network within&amp;nbsp;minutes.&lt;/p&gt;
-&lt;h1&gt;Acknowledgement&lt;/h1&gt;
+&lt;h1&gt;Acknowledgment&lt;/h1&gt;
 &lt;p&gt;I&amp;#8217;m thankful to &lt;a href="https://github.com/degano/"&gt;Alessandro Degano&lt;/a&gt; for suggesting me
 &lt;a href="https://www.influxdata.com/time-series-platform/telegraf/"&gt;Telegraf&lt;/a&gt; and showing me &lt;a href="https://github.com/degano/homelab/tree/9f93ea0b296/kubernetes/telegraf"&gt;how to set it up&lt;/a&gt;.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Exploring Nix</title><link href="https://thewagner.net/blog/2020/04/30/exploring-nix/" rel="alternate"></link><published>2020-04-30T00:00:00+02:00</published><updated>2020-04-30T00:00:00+02:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2020-04-30:/blog/2020/04/30/exploring-nix/</id><summary type="html">&lt;p&gt;For the last few weeks I&amp;#8217;ve been exploring &lt;a href="https://nixos.org/"&gt;NixOS&lt;/a&gt; and its
 related tools.  This article is an experience report and a collection of
@@ -1971,7 +1971,7 @@ can be composed to model the software delivery&amp;nbsp;process.&lt;/p&gt;
 &lt;p&gt;In a future post I will present &lt;a href="https://github.com/wagdav/kevlar"&gt;an experimental
 system&lt;/a&gt; which uses these principles to
 express continuous integration and continuous delivery&amp;nbsp;pipelines.&lt;/p&gt;
-&lt;h1&gt;Acknowledgement&lt;/h1&gt;
+&lt;h1&gt;Acknowledgment&lt;/h1&gt;
 &lt;p&gt;Many thanks to the members of the &lt;a href="https://pix4d.com"&gt;Pix4D&lt;/a&gt; &lt;span class="caps"&gt;CI&lt;/span&gt; team for the
 inspirational discussions during coffee&amp;nbsp;breaks.&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;m grateful to &lt;a href="https://conal.net"&gt;Conal Elliott&lt;/a&gt; for reviewing an early draft
@@ -2151,7 +2151,7 @@ the language standard introduced the &lt;code&gt;import&lt;/code&gt; keyword.&lt
 &lt;p&gt;Configuration management systems such as &lt;a href="https://www.ansible.com"&gt;Ansible&lt;/a&gt; and
 &lt;a href="https://www.saltstack.com/"&gt;Salt&lt;/a&gt; allow you to manage a large number of
 machines.  You specify your servers&amp;#8217; configuration in a &lt;span class="caps"&gt;YAML&lt;/span&gt; file and these
-systems make sure that the desired files, software etc. are deployed on&amp;nbsp;them.&lt;/p&gt;
+systems make sure that the desired files, software, etc., are deployed on&amp;nbsp;them.&lt;/p&gt;
 &lt;p&gt;A core feature of these tools is the ability to specify configuration file
 templates which are rendered using context specific parameters (for example:
 the server&amp;#8217;s assigned &lt;span class="caps"&gt;IP&lt;/span&gt; address).  These templates are functions which take
@@ -2193,7 +2193,7 @@ configuration files.  I encourage you to take a look at
 &lt;a href="https://dhall-lang.org/"&gt;Dhall&lt;/a&gt;.  Get over its unusual syntax and devote some
 time understanding the fundamental role of functions in software configuration
 and in programming in&amp;nbsp;general.&lt;/p&gt;
-&lt;h1&gt;Acknowledgement&lt;/h1&gt;
+&lt;h1&gt;Acknowledgment&lt;/h1&gt;
 &lt;p&gt;I&amp;#8217;m grateful to &lt;a href="https://kmdouglass.github.io"&gt;Kyle M. Douglass&lt;/a&gt; for reviewing
 an early draft of this article and for providing valuable&amp;nbsp;feedback.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>O’Reilly Velocity Conference 2019</title><link href="https://thewagner.net/blog/2019/11/08/oreilly-velocity-conference-2019/" rel="alternate"></link><published>2019-11-08T00:00:00+01:00</published><updated>2019-11-08T00:00:00+01:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2019-11-08:/blog/2019/11/08/oreilly-velocity-conference-2019/</id><summary type="html">&lt;p&gt;Between November 5-7 I spent three days on the &lt;a href="https://conferences.oreilly.com/velocity/vl-eu"&gt;O&amp;#8217;Reilly Velocity&lt;/a&gt; conference.
 This post documents the sessions I like the&amp;nbsp;most.&lt;/p&gt;
@@ -2904,7 +2904,7 @@ axes.  Let&amp;#8217;s see these two aspects in&amp;nbsp;detail.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;em&gt;Restarting&lt;/em&gt;: if a task has an non-built dependency its build is aborted and
-  restarted later when the dependency is available. Examples: Bazel,&amp;nbsp;Exel&lt;/p&gt;
+  restarted later when the dependency is available. Examples: Bazel,&amp;nbsp;Excel&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;em&gt;Suspending&lt;/em&gt;: a task is suspended when its build encounters a missing
@@ -4088,7 +4088,7 @@ light-weight threads and perform the three search actions concurrently.  The
 output of the program is similar (clearly the random timings will change), but
 it runs faster.  The running time will be limited by the &lt;em&gt;slowest&lt;/em&gt; search&amp;nbsp;query.&lt;/p&gt;
 &lt;p&gt;We get a completely different behavior, but our code has the same structure as
-the sequential version.  We don&amp;#8217;t have to use locks, mutexes, callbacks, etc.
+the sequential version.  We don&amp;#8217;t have to use locks, mutexes, callbacks, etc.,
 the code clearly expresses our intent.  It feels like we got concurrency &lt;em&gt;for
 free&lt;/em&gt;.&lt;/p&gt;
 &lt;h1&gt;Search&amp;nbsp;2.1&lt;/h1&gt;
