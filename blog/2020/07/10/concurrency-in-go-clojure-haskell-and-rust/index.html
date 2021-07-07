@@ -101,8 +101,7 @@ works on the <span class="caps">JVM</span> and in a web browser using&nbsp;Cloju
 <h1>Haskell</h1>
 <p>My first implementation of the simulated search engine was in
 <a href="../../../../../blog/2018/02/26/concurrency-patterns/">Haskell</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">-- https://thewagner.net{filename}2018-02-26-Concurrency.markdown</span>
-<span class="nf">search30</span> <span class="ow">::</span> <span class="kt">SearchQuery</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
+<div class="highlight"><pre><span></span><code><span class="nf">search30</span> <span class="ow">::</span> <span class="kt">SearchQuery</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
 <span class="nf">search30</span> <span class="n">query</span> <span class="ow">=</span> <span class="kr">do</span>
     <span class="n">req</span> <span class="ow">&lt;-</span> <span class="n">timeout</span> <span class="n">maxDelay</span> <span class="o">$</span>
         <span class="n">mapConcurrently</span> <span class="p">(</span><span class="n">fastest</span> <span class="n">query</span><span class="p">)</span> <span class="p">[</span><span class="kt">Web</span><span class="p">,</span> <span class="kt">Image</span><span class="p">,</span> <span class="kt">Video</span><span class="p">]</span>

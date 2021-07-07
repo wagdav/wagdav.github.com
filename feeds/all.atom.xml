@@ -999,8 +999,7 @@ works on the &lt;span class="caps"&gt;JVM&lt;/span&gt; and in a web browser usin
 &lt;h1&gt;Haskell&lt;/h1&gt;
 &lt;p&gt;My first implementation of the simulated search engine was in
 &lt;a href="https://thewagner.net/blog/2018/02/26/concurrency-patterns/"&gt;Haskell&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;-- https://thewagner.net{filename}2018-02-26-Concurrency.markdown&lt;/span&gt;
-&lt;span class="nf"&gt;search30&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;SearchQuery&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;search30&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;SearchQuery&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
 &lt;span class="nf"&gt;search30&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt;
     &lt;span class="n"&gt;req&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;maxDelay&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;
         &lt;span class="n"&gt;mapConcurrently&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fastest&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;Web&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Video&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
