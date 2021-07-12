@@ -133,8 +133,8 @@ explain, it&amp;#8217;s too big.  If a few words can&amp;#8217;t express what I&
 project is ill-defined, or I lack some knowledge to execute&amp;nbsp;it.&lt;/p&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
 &lt;p&gt;I wrote during my whole career, but only lately I have been cultivating my
-writing skills.  I practice writing in my free time and professionally.  I&amp;#8217;m
-documenting my hobby projects and software experiments on my blog and write
+writing skills.  I practice writing in my free time and professionally.  I
+document my hobby projects and software experiments on my blog and I write
 &amp;#8220;evolving&amp;#8221; documents on the company&amp;#8217;s internal&amp;nbsp;wiki.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Markov-chain word generation</title><link href="https://thewagner.net/blog/2021/03/07/markov-chain-word-generation/" rel="alternate"></link><published>2021-03-07T00:00:00+01:00</published><updated>2021-03-07T00:00:00+01:00</updated><author><name>David Wagner</name></author><id>tag:thewagner.net,2021-03-07:/blog/2021/03/07/markov-chain-word-generation/</id><summary type="html">&lt;p&gt;Recently I reread some chapters of the book &lt;a href="https://www.cs.princeton.edu/~bwk/tpop.webpage/"&gt;The Practice of Programming by
 Brian Kernighan and Rob Pike&lt;/a&gt;.  In Chapter 3 on &lt;em&gt;Design and
 Implementation&lt;/em&gt; the authors present several implementations of a random text
